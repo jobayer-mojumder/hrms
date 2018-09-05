@@ -1,0 +1,32 @@
+/*
+* @Author: Jobayer Mojumder
+* @Date:   2018-08-30 16:07:22
+* @Last Modified by:   jobayer
+* @Last Modified time: 2018-09-04 18:19:27
+*/
+.content{
+	padding: 10px;
+}
+.table{
+	font-size: 13px;
+}
+.pagination{
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+.alert{
+	padding: 8px;
+	margin-bottom: 10px;
+}
+
+.alert-dismissable .close, .alert-dismissible .close {
+	right: 0px;
+}
+.form-horizontal .form-group{
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.image-emp{
+	padding: 10px;
+}

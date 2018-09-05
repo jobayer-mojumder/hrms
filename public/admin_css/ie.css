@@ -1,0 +1,10 @@
+.form, .box, .link1, .box1, .form input, .page5-button, #contact-form input, #contact-form textarea, .box2, .sf-menu li li li a, .bg2, .sf-menu li li, .sfHover li a,
+.sf-menu, .first a, .sf-menu .last a, .list2 li, .link3, .link9, .box2 
+{
+	behavior: url(js/PIE.htc);
+	position:relative;
+}
+.sf-menu ul, .sf-menu li li li, .sf-menu li li li a
+{
+	behavior: url(js/PIE.htc);
+}

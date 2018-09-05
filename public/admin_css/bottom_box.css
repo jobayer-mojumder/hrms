@@ -1,0 +1,37 @@
+#bottom_box{
+	margin:auto;
+	padding:auto;
+	width: 960px;
+	background-color: #F5F5F5;
+	padding: 10px;
+	
+}
+#bottom-text{
+	width:950px;
+	text-align: center;
+	
+}
+
+#ligin-box{
+	width: 950px;
+	height: 46px;
+	padding-top:18px;
+	background-image: url(../images/tbp_masthead_bluefinal.jpg);
+}
+#bottom-form{
+	/*margin-top:20px;
+	padding-top: 20px;*/
+	margin-left:30px;
+	color:#FFFFFF;
+	font-family:"Times New Roman", Times, serif;
+	font-size:20px;	
+	float:left;
+	
+}
+.submit
+{
+    background: url(../images/submit_button.jpg) no-repeat;
+    height: 25px;
+    width: 68px;
+    border: none;
+}

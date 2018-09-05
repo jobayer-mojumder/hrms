@@ -1,0 +1,27 @@
+.listpagination {
+	font-size: 80%;
+}
+.listpagination a{
+    text-decoration: none;
+	border: solid 1px #AAE;
+	color: #15B;
+    display: block;
+    float: left;
+    padding: 0.3em 0.5em;
+    margin-right: 5px;
+}
+.listpagination a:hover{
+    text-decoration: none;
+	background: #DDEEFF;
+    color: #15B;
+	border: solid 1px #BBDDFF;
+    display: block;
+    float: left;
+    padding: 0.3em 0.5em;
+    margin-right: 5px;
+}
+.listpagination .current {
+    background: #26B;
+    color: #fff;
+	border: solid 1px #AAE;
+}
