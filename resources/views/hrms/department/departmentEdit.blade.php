@@ -7,7 +7,7 @@
 	<div class="col-xs-12">
 		<div class="box box-info">
 			<div class="box-header with-border">
-				<h4 class="box-name">Department info edit</h4>
+				<h4 class="box-title">Department info edit</h4>
 			</div>
 			
 			<div class="col-sm-12">

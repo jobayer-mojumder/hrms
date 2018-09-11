@@ -1,11 +1,10 @@
 @extends('layouts.master')
-
-@section('content')
-<section class="content-header">
+@section('content-header')
     <h1>
         Employee Info <span class="pull-right"><a href="{{ route('employee_edit', ['id' => $employee->id ]) }}">Edit this Info</a></span>
     </h1>
-</section>
+@endsection
+@section('content')
 <section class="content">
     <div class="row">
 

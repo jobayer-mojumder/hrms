@@ -165,6 +165,9 @@
         </section>
     </aside>
     <div class="content-wrapper">
+        <section class="content-header">
+            @yield('content-header')
+        </section>
         @yield('content')
     </div>
     <footer class="main-footer">

@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('content-header')
+    <h1>New Payroll</h1>
+@endsection
 @section('content')
     <div class="col-sm-12">
         @if ($errors->any())
@@ -33,7 +35,7 @@
     </div>
     <section class="content">
         <div class="row">
-            <form method="post" action="{{ route('payroll_add') }}" >
+            <form method="post" action="{{ route('payroll_add') }}">
                 {{ csrf_field() }}
                 <div class="col-sm-12">
                     <div class="col-sm-6 col-md-offset-3">
@@ -98,31 +100,38 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="basic_salary">Basic Salary</label>
-                                <input value="" type="number" class="form-control" name="basic_salary" id="basic_salary" >
+                                <input value="" type="number" class="form-control" name="basic_salary" id="basic_salary"
+                                       step=".01">
                             </div>
                             <div class="form-group">
                                 <label for="house_rent_allowance">House Rent Allowance</label>
-                                <input value="" type="number" class="form-control" name="house_rent_allowance" id="house_rent_allowance">
+                                <input value="" type="number" class="form-control" name="house_rent_allowance"
+                                       id="house_rent_allowance" step=".01">
                             </div>
                             <div class="form-group">
                                 <label for="medical_allowance">Medical Allowance</label>
-                                <input value="" type="number" class="form-control" name="medical_allowance" id="medical_allowance" >
+                                <input value="" type="number" class="form-control" name="medical_allowance"
+                                       id="medical_allowance" step=".01">
                             </div>
                             <div class="form-group">
                                 <label for="special_allowance">Special Allowance</label>
-                                <input value="" type="number" class="form-control" id="special_allowance" name="special_allowance" >
+                                <input value="" type="number" class="form-control" id="special_allowance"
+                                       name="special_allowance" step=".01">
                             </div>
                             <div class="form-group">
                                 <label for="fuel_allowance">Fuel Allowance</label>
-                                <input value="" type="number" class="form-control" id="fuel_allowance" name="fuel_allowance" >
+                                <input value="" type="number" class="form-control" id="fuel_allowance"
+                                       name="fuel_allowance" step=".01">
                             </div>
                             <div class="form-group">
                                 <label for="phone_bill_allowance">Phone Bill Allowance</label>
-                                <input value="" type="number" class="form-control" id="phone_bill_allowance" name="phone_bill_allowance" >
+                                <input value="" type="number" class="form-control" id="phone_bill_allowance"
+                                       name="phone_bill_allowance" step=".01">
                             </div>
                             <div class="form-group">
                                 <label for="other_allowance">Other Allowance</label>
-                                <input value="" type="number" class="form-control" id="other_allowance" name="other_allowance" >
+                                <input value="" type="number" class="form-control" id="other_allowance"
+                                       name="other_allowance" step=".01">
                             </div>
                         </div>
                     </div>
@@ -137,15 +146,18 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="tax_deduction">Tax Deduction</label>
-                                <input value="" type="number" class="form-control" name="tax_deduction" id="tax_deduction" >
+                                <input value="" type="number" class="form-control" name="tax_deduction"
+                                       id="tax_deduction" step=".01">
                             </div>
                             <div class="form-group">
                                 <label for="provident_fund">Provident Fund</label>
-                                <input value="" type="number" class="form-control" name="provident_fund" id="provident_fund">
+                                <input value="" type="number" class="form-control" name="provident_fund"
+                                       id="provident_fund" step=".01">
                             </div>
                             <div class="form-group">
                                 <label for="other_deduction">Other Deduction</label>
-                                <input value="" type="number" class="form-control" name="other_deduction" id="other_deduction" >
+                                <input value="" type="number" class="form-control" name="other_deduction"
+                                       id="other_deduction" step=".01">
                             </div>
                         </div>
                     </div>
@@ -198,7 +210,7 @@
             $('input[type=number]').val(0);
 
             $('input[type=number]').on('change', function () {
-                if (this.value == ''){
+                if (this.value == '' || parseFloat(this.value) < 0) {
                     this.value = 0;
                 }
                 salaryCalcualtion();
@@ -223,27 +235,27 @@
                 showHide();
             });
 
-            function showHide(){
+            function showHide() {
                 let employee = $('#employee').val();
-                if (employee){
+                if (employee) {
                     $('.salary-hide').show();
-                }else{
+                } else {
                     $('input[type=number]').val(0);
                     $('.salary-hide').hide();
                 }
             }
 
-            function salaryCalcualtion(){
-                let basic_salary =  parseFloat($('#basic_salary').val());
-                let house_rent_allowance =  parseFloat($('#house_rent_allowance').val());
-                let medical_allowance =  parseFloat($('#medical_allowance').val());
-                let special_allowance =  parseFloat($('#special_allowance').val());
-                let fuel_allowance =  parseFloat($('#fuel_allowance').val());
-                let phone_bill_allowance =  parseFloat($('#phone_bill_allowance').val());
-                let other_allowance =  parseFloat($('#other_allowance').val());
-                let tax_deduction =  parseFloat($('#tax_deduction').val());
-                let provident_fund =  parseFloat($('#provident_fund').val());
-                let other_deduction =  parseFloat($('#other_deduction').val());
+            function salaryCalcualtion() {
+                let basic_salary = parseFloat($('#basic_salary').val());
+                let house_rent_allowance = parseFloat($('#house_rent_allowance').val());
+                let medical_allowance = parseFloat($('#medical_allowance').val());
+                let special_allowance = parseFloat($('#special_allowance').val());
+                let fuel_allowance = parseFloat($('#fuel_allowance').val());
+                let phone_bill_allowance = parseFloat($('#phone_bill_allowance').val());
+                let other_allowance = parseFloat($('#other_allowance').val());
+                let tax_deduction = parseFloat($('#tax_deduction').val());
+                let provident_fund = parseFloat($('#provident_fund').val());
+                let other_deduction = parseFloat($('#other_deduction').val());
 
                 let total_allowance = house_rent_allowance + medical_allowance + special_allowance + fuel_allowance + phone_bill_allowance + other_allowance;
                 let total_deduction = tax_deduction + provident_fund + other_deduction;
@@ -251,7 +263,7 @@
                 $('#a_basic_salary').text(basic_salary);
                 $('#a_total_allowance').text(total_allowance);
                 $('#a_total_deduction').text(total_deduction);
-                $('#a_total').text(total_allowance+basic_salary-total_deduction);
+                $('#a_total').text(total_allowance + basic_salary - total_deduction);
 
             }
         });

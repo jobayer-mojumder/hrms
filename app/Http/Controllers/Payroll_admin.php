@@ -113,10 +113,44 @@ class Payroll_admin extends Controller
         } else {
             if ($request->isMethod('POST')) {
 
-            } else {
+                $payroll = Payroll::find($id);
+                $payroll->basic_salary = $request->input('basic_salary');
+                $payroll->house_rent_allowance = $request->input('house_rent_allowance');
+                $payroll->medical_allowance = $request->input('medical_allowance');
+                $payroll->special_allowance = $request->input('special_allowance');
+                $payroll->fuel_allowance = $request->input('fuel_allowance');
+                $payroll->phone_bill_allowance = $request->input('phone_bill_allowance');
+                $payroll->other_allowance = $request->input('other_allowance');
+                $payroll->tax_deduction = $request->input('tax_deduction');
+                $payroll->provident_fund = $request->input('provident_fund');
+                $payroll->other_deduction = $request->input('other_deduction');
+                $payroll->employment_type = $request->input('employment_type');
 
+                if ($payroll->update()) {
+                    $request->session()->flash('smsg', 'Payroll updated Successfully!');
+                    return redirect()->route('payroll');
+                } else {
+                    $request->session()->flash('emsg', 'Payroll update failed!');
+                    return redirect()->route('payroll_edit', ['id'=>$id]);
+                }
+            } else {
                 $payroll = Payroll::find($id);
                 return view('hrms.payroll.payrollEdit', ['payroll' => $payroll]);
+            }
+        }
+    }
+
+    public function payroll_view(Request $request, $id){
+        if (!$this->check_user()) {
+            return redirect()->route('login');
+        } else {
+            $payroll = Payroll::find($id);
+
+            if (count($payroll)){
+                return view('hrms.payroll.payrollView', ['payroll' => $payroll]);
+            }else{
+                $request->session()->flash('emsg', 'Payroll not found!');
+                return redirect()->route('payroll');
             }
         }
     }

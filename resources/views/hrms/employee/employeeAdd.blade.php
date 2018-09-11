@@ -1,11 +1,8 @@
 @extends('layouts.master')
-
+@section('content-header')
+    <h1>New Employee</h1>
+@endsection
 @section('content')
-    <section class="content-header">
-        <h1>
-            New Employee
-        </h1>
-    </section>
     <div class="col-sm-12">
         @if ($errors->any())
             <div class="col-sm-offset-3 col-sm-6 alert-message">
