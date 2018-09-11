@@ -26,7 +26,7 @@
                     </div>
                 @endif
 
-                <div class="col-sm-12" style="text-align: right;">
+                <div class="col-sm-12 add-button" >
                     <a href="{{ route('employee_add') }}" class="btn  btn-primary btn-flat">Add new Employee</a>
                     <br>
                 </div>

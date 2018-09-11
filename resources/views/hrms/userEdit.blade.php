@@ -26,7 +26,7 @@
 			<td valign=top>
 
 				@foreach ($user as $user_data)
-				<form method=post action="{{ url('user_edit/'.$user_data->id) }}" enctype="multipart/form-data" name="myform" id="myform">
+				<form method=post action="{{ route('adminEdit', ['id'=> $user_data->id]) }}" enctype="multipart/form-data" name="myform" id="myform">
 					{{ csrf_field() }}
 					<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=0 style="border-collapse: collapse" bordercolor="#e4e4e4" bgcolor=f2f2f2 align=left width="80%">
 						<tr><td>
@@ -51,7 +51,7 @@
 								<tr>
 									<td class=bodytext valign=top>Image</td>
 									<td class=bodytext valign=top>
-										<input  type="file"  size=50 class="form-control" name="image" required>
+										<input  type="file"  size=50 class="form-control" name="image">
 									</td>
 								</tr>
 
@@ -60,7 +60,8 @@
 									<td class=bodytext valign=top>
 										<select name="group" required>
 											<option value="" >Select</option>
-											<option value="admin" @if($user_data->group=='admin'): {{ 'selected' }} @endif>Admin</option>
+											<option value="1" @if($user_data->group=='1'): {{ 'selected' }} @endif>Super Admin</option>
+											<option value="2" @if($user_data->group=='2'): {{ 'selected' }} @endif>Admin</option>
 										</select>
 									</td>
 								</tr>

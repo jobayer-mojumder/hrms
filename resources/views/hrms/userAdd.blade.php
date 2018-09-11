@@ -69,7 +69,8 @@
 									<td class=bodytext valign=top>
 										<select name="group" required>
 											<option value="" >Select</option>
-											<option value="admin">Admin</option>
+											<option value="1">Super Admin</option>
+											<option value="2">Admin</option>
 										</select>
 									</td>
 								</tr>

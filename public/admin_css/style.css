@@ -1,8 +1,8 @@
 /*
 * @Author: Jobayer Mojumder
 * @Date:   2018-08-30 16:07:22
-* @Last Modified by:   jobayer
-* @Last Modified time: 2018-09-04 18:19:27
+* @Last Modified by:   jobayermojumder
+* @Last Modified time: 2018-09-10 22:53:19
 */
 .content{
 	padding: 10px;
@@ -15,8 +15,7 @@
 	margin-bottom: 0px;
 }
 .alert{
-	padding: 8px;
-	margin-bottom: 10px;
+	border-radius: 20px;
 }
 
 .alert-dismissable .close, .alert-dismissible .close {
@@ -29,4 +28,27 @@
 
 .image-emp{
 	padding: 10px;
+}
+
+.thumb{
+	width: 25px;
+	height: 25px;
+}
+.box-profile{
+	padding: 15px;
+}
+
+.alert-success {
+    color: #28623c;
+    background-color: #dbf2e3;
+    border-color: #cdedd8;
+}
+.alert-danger {
+    color: #813838;
+    background-color: #fee2e1;
+    border-color: #fdd6d6;
+}
+.add-button{
+	margin: 10px;
+    text-align: right;
 }

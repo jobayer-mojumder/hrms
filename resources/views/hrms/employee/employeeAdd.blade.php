@@ -208,16 +208,16 @@
                         </div>
                         <div class="box-body">                    
                             <div class="form-group">
-                                <label for="exampleInputFile">Appointment letter</label>
-                                <input value="" class="form-control" type="file" name="doc_appoinment" id="exampleInputFile">
+                                <label for="appointment_file">Appointment letter</label>
+                                <input value="" class="form-control" type="file" name="appointment_file">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputFile">CV</label>
-                                <input value="" class="form-control" type="file" id="exampleInputFile">
+                                <label for="cv_file">CV</label>
+                                <input value="" class="form-control" type="file" name="cv_file">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputFile">NID</label>
-                                <input value="" class="form-control" type="file" id="exampleInputFile">
+                                <label for="nid_file">NID</label>
+                                <input value="" class="form-control" type="file" name="nid_file">
                             </div>
                             <div class="form-group" align="middle">
                                 <br>

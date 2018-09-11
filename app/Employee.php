@@ -21,4 +21,8 @@ class Employee extends Model
     public function documentinfo() {
         return $this->hasOne(Documentinfo::class, 'emp_id', 'id');
     }
+
+    public function payroll() {
+        return $this->hasOne(Payroll::class, 'emp_id', 'id');
+    }
 }

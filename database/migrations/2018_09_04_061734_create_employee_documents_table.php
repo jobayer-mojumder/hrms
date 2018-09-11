@@ -17,7 +17,7 @@ class CreateEmployeeDocumentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned(true);
             $table->integer('emp_id')->unsigned(true);
-            $table->string('appoinment')->nullable(true);
+            $table->string('appointment')->nullable(true);
             $table->string('cv')->nullable(true);
             $table->string('nid')->nullable(true);
 

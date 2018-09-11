@@ -3,8 +3,8 @@
 /**
  * @Author: Jobayer Mojumder
  * @Date:   2017-09-19 10:32:14
- * @Last Modified by:   jobayer
- * @Last Modified time: 2018-09-04 15:04:27
+ * @Last Modified by:   jobayermojumder
+ * @Last Modified time: 2018-09-10 11:37:26
  */
 
 namespace App\Http\Controllers;
@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Image;
+use app\User;
 
 class AdminController extends Controller {
 	/**
@@ -27,28 +28,61 @@ class AdminController extends Controller {
 		$this->middleware('auth');
 	}
 
-	/**
-	 * Show the application dashboard.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-
-	public function index() {
+	public function check_user() {
 		if (Auth::check()) {
-			return view('hrms.home');
+			if (Auth::user()->group == 1 || Auth::user()->group == 2) {
+				return 1;
+			} else {
+				return 0;
+			}
 		} else {
+			return 0;
+		}
+	}
+
+	public function index(Request $request) {
+		if (!$this->check_user()) {
 			redirect('logout');
+		} else {
+			return view('hrms.home');
 		}
 
 	}
 
+	public function userPassword(Request $request){
+        if (!$this->check_user()) {
+            redirect('logout');
+        }else{
+            if( $request->isMethod('get') ){
+                return view('hrms.userPassword');
+            }elseif( $request->isMethod('post') ){
+                $request->validate([
+                    'password' => 'required|string|min:6|confirmed',
+                ]);
+
+                $postdata['password'] = bcrypt($request->input('password'));
+
+                $id = Auth::user()->id;
+
+                $result = DB::table('users')->where('id', $id)->update($postdata);
+                if ($result) {
+                    $request->session()->flash('smsg', 'User Password Change was Successful!');
+                    return redirect()->route('adminList');
+                }else{
+                    $request->session()->flash('emsg', 'User Password Change was Un-Successful!');
+                    return redirect()->route('adminList');
+                }
+            }
+        }
+    }
+
 	/*---------------------------- user View  -----------------------------*/
 
-	public function userlist() {
-		if (!Auth::check()) {
+	public function userlist(Request $request) {
+		if (!$this->check_user()) {
 			redirect('logout');
 		} else {
-			$user = DB::table('users')->paginate(10);
+			$user = User::whereIn('group', array(1, 2))->paginate(10);
 			return view('hrms.userlist', ['user' => $user]);
 		}
 	}
@@ -56,7 +90,7 @@ class AdminController extends Controller {
 	/*---------------------- user add --------------------*/
 
 	public function userAdd(Request $request) {
-		if (!Auth::check()) {
+		if (!$this->check_user()) {
 			redirect('logout');
 		} else {
 			if ($request->isMethod('get')) {
@@ -95,11 +129,11 @@ class AdminController extends Controller {
 
 				$result = DB::table('users')->insert($postdata);
 				if ($result) {
-					$request->session()->flash('msg', 'User Insert was <span style="color:Green;">Successful!</span>');
-					return redirect('/userlist');
+					$request->session()->flash('msg', 'User Insert was Successful!');
+					return redirect()->route('adminList');
 				} else {
-					$request->session()->flash('msg', 'User Insert was <span style="color:red;">Un-Successful!</span>');
-					return redirect('/user_edit');
+					$request->session()->flash('msg', 'User Insert was Un-Successful!');
+					return redirect()->route('adminAdd');
 				}
 			} else {
 				return view('auth.login');
@@ -109,7 +143,7 @@ class AdminController extends Controller {
 
 	/*---------------------------- user Edit  ------------------------------*/
 	public function userEdit(Request $request, $id) {
-		if (!Auth::check()) {
+		if (!$this->check_user()) {
 			redirect('logout');
 		} else {
 			if ($request->isMethod('get')) {
@@ -117,7 +151,7 @@ class AdminController extends Controller {
 					$user = DB::table('users')->where('id', $id)->get();
 					return view('hrms.userEdit', ['user' => $user]);
 				} else {
-					$this->userlist();
+					return redirect()->route('adminList');
 				}
 			} elseif ($request->isMethod('post')) {
 
@@ -161,11 +195,11 @@ class AdminController extends Controller {
 
 				$result = DB::table('users')->where('id', $id)->update($postdata);
 				if ($result) {
-					$request->session()->flash('msg', 'User Update was <span style="color:Green;">Successful!</span>');
-					return redirect('/userlist');
+					$request->session()->flash('smsg', 'User Update was Successful!');
+					return redirect()->route('adminList');
 				} else {
-					$request->session()->flash('msg', 'User Update was <span style="color:red;">Un-Successful!</span>');
-					return redirect('/userEdit/' . $id);
+					$request->session()->flash('emsg', 'User Update was Un-Successful!');
+					return redirect()->route('adminEdit', ['id'=> $id]);
 				}
 			} else {
 				return view('auth.login');
@@ -176,7 +210,7 @@ class AdminController extends Controller {
 	/*------------------------- user delete --------------------------*/
 
 	public function userDelete(Request $request, $id) {
-		if (!Auth::check()) {
+		if (!$this->check_user()) {
 			redirect('logout');
 		} else {
 			$image = DB::table('users')->select('image', 'image_path', 'thumb')->where('id', $id)->get();
@@ -195,11 +229,11 @@ class AdminController extends Controller {
 					unlink($thumb);
 				}
 
-				$request->session()->flash('msg', 'User Delete was <span style="color:Green;">Successful!</span>');
-				return redirect('/userlist');
+				$request->session()->flash('smsg', 'User Delete was Successful!');
+				return redirect()->route('adminList');
 			} else {
-				$request->session()->flash('msg', 'User Delete was Unsuccessful!');
-				return redirect('/userlist');
+				$request->session()->flash('emsg', 'User Delete was Unsuccessful!');
+				return redirect()->route('adminList');
 			}
 		}
 	}
@@ -207,24 +241,28 @@ class AdminController extends Controller {
 	/*---------------------- user status change ---------------*/
 
 	public function userStatus(Request $request, $id, $value) {
-		if ($value) {
-			$result = $this->statusChange('users', $id, '0');
+		if (!$this->check_user()) {
+			redirect('logout');
 		} else {
-			$result = $this->statusChange('users', $id, '1');
-		}
-		if ($result) {
-			$request->session()->flash('msg', 'Status Change was <span style="color:Green;">Successful!</span>');
-			return redirect('/userlist');
-		} else {
-			$request->session()->flash('msg', 'Status Change was <span style="color:red;">Un-Successful!</span>');
-			return redirect('/userlist');
+			if ($value) {
+				$result = $this->statusChange('users', $id, '0');
+			} else {
+				$result = $this->statusChange('users', $id, '1');
+			}
+			if ($result) {
+				$request->session()->flash('msg', 'Status Change was Successful!');
+				return redirect()->route('adminList');
+			} else {
+				$request->session()->flash('msg', 'Status Change was Un-Successful!');
+				return redirect()->route('adminList');
+			}
 		}
 	}
 
 	/*---------------------- status change main function ---------------*/
 
-	public function statusChange($table, $id, $value) {
-		if (!Auth::check()) {
+	public function statusChange(Request $request, $table, $id, $value) {
+		if (!$this->check_user()) {
 			redirect('logout');
 		} else {
 			$postdata['status'] = $value;
@@ -237,9 +275,10 @@ class AdminController extends Controller {
 		}
 	}
 
+
 	/*----------------------- Get file -------------*/
-	public function getFile($location) {
-		if (!Auth::check()) {
+	public function getFile(Request $request ,$location) {
+		if (!$this->check_user()) {
 			redirect('logout');
 		} else {
 			$fullpath = $location;

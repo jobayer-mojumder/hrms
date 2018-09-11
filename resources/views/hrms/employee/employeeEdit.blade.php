@@ -103,11 +103,11 @@
                                 <input value="{{ old('') }}" class="form-control" type="file" id="image" name="image">
                                 <div class="image-emp">
                                     @php
-                                        if ($employee->photo) {
-                                            $src = $employee->photo_path.$employee->photo;
-                                        }else{
-                                            $src = $employee->photo_path.'no_images.png';
-                                        }
+                                    if ($employee->photo) {
+                                        $src = $employee->photo_path.$employee->photo;
+                                    }else{
+                                        $src =  asset('public/assets/employee') .'/no_images.png';
+                                    }
                                     @endphp
                                     <img src="{{ asset($src) }}" height="155px">
                                 </div>
@@ -226,15 +226,34 @@
                         <div class="box-body">                    
                             <div class="form-group">
                                 <label for="exampleInputFile">Appointment letter</label>
-                                <input value="" class="form-control" type="file" name="doc_appoinment" id="exampleInputFile">
+                                <input value="" class="form-control" type="file" name="appointment_file" id="exampleInputFile">
+                                @if($document->appointment)
+                                
+                                <input type="hidden" class="form-control" name="old_appointment_file" value="{{ $document->appointment }}" readonly>
+                                
+                                <input type="checkbox" class="flat-blue"  name="del_appointment_file" value="1"> Delete Old File
+                                @endif
+
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFile">CV</label>
-                                <input value="" class="form-control" type="file" id="exampleInputFile">
+                                <input value="" class="form-control" type="file" name="cv_file">
+                                @if($document->cv)
+
+                                <input type="hidden" class="form-control" name="old_cv_file" value="{{ $document->cv }}" readonly>
+                                
+                                <input type="checkbox" class="flat-blue"  name="del_cv_file" value="1"> Delete Old File
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFile">NID</label>
-                                <input value="" class="form-control" type="file" id="exampleInputFile">
+                                <input value="" class="form-control" type="file" name="nid_file">
+                                @if($document->nid)
+                                
+                                <input type="hidden" class="form-control" name="old_nid_file" value="{{ $document->nid }}" readonly>
+                                
+                                <input type="checkbox" class="flat-blue"  name="del_nid_file" value="1"> Delete Old File
+                                @endif
                             </div>
                             <div class="form-group" align="middle">
                                 <br>

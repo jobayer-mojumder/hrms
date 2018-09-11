@@ -84,7 +84,7 @@
                             <li class="user-body">
                                 <div class="row">
                                     <div class="col-xs-5 text-left">
-                                        <a class=topmenu href="">Change Pass</a>
+                                        <a class=topmenu href="{{ route('adminPassword') }}">Change Pass</a>
                                     </div>
                                     <div class="col-xs-7 text-left">
                                         <a class=topmenu href="">IP authenticate List</a>
@@ -93,11 +93,11 @@
                             </li>
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a class="btn btn-default btn-flat" href="{{ route('userlist') }}">Users List</a>
+                                    <a class="btn btn-default btn-flat" href="{{ route('adminList') }}">Users List</a>
                                 </div>
                                 <div class="pull-right">
                                     <a class="btn btn-default btn-flat" href="{{ route('logout') }}" onclick="event.preventDefault();
-										document.getElementById('logout-form').submit();">
+                                        document.getElementById('logout-form').submit();">
                                         Sign Out
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -117,20 +117,51 @@
             <ul class="sidebar-menu">
                 <li class="header"> CONTROL PANEL</li>
 
-                <li class="treeview @if (Request::segment(1)=='employee') {{ 'active' }} @endif "><a href="#"><i
-                                class="fa fa-address-book-o text-blue"></i> <span>Employee</span> <span
-                                class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span></a>
+                <li class="treeview {{ Request::segment(2)=='employee' ? "active" : "" }}">
+                    <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Employee</span>
+                        <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
 
                     <ul class="treeview-menu">
-                        <li class=""><a href="{{ route('employee') }}"><i class="fa fa-angle-right text-blue"
-                                                                          style="width:5px"></i> Employees</a></li>
-
-                        <li class=""><a href="{{ route('department') }}"><i class="fa fa-angle-right text-blue"
-                                                                            style="width:5px"></i> Departments</a></li>
-
-                        <li class=""><a href="{{ route('designation') }}"><i class="fa fa-angle-right text-blue"
-                                                                             style="width:5px"></i> Designations</a>
+                        <li class="{{ Request::segment(3)=='emp' ? "active" : "" }}">
+                            <a href="{{ route('employee') }}"><i class="fa fa-angle-right text-blue"
+                                                                 style="width:5px"></i> Employees</a>
                         </li>
+
+                        <li class="{{ Request::segment(3)=='department' ? "active" : "" }}">
+                            <a href="{{ route('department') }}"><i class="fa fa-angle-right text-blue"
+                                                                   style="width:5px"></i> Departments</a>
+                        </li>
+
+                        <li class="{{ Request::segment(3)=='designation' ? "active" : "" }}">
+                            <a href="{{ route('designation') }}"><i class="fa fa-angle-right text-blue"
+                                                                    style="width:5px"></i> Designations</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="treeview {{ Request::segment(2)=='payroll' ? "active" : "" }}">
+                    <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Payroll</span>
+                        <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="{{ Request::segment(3)=='pay' ? "active" : "" }}">
+                            <a href="{{ route('payroll') }}"><i class="fa fa-angle-right text-blue"
+                                                                 style="width:5px"></i> Manage Payroll</a>
+                        </li>
+
+                        <li class="{{ Request::segment(3)=='add' ? "active" : "" }}">
+                            <a href="{{ route('payroll_add') }}"><i class="fa fa-angle-right text-blue"
+                                                                 style="width:5px"></i> Add Payroll</a>
+                        </li>
+
+                        <li class="{{ Request::segment(3)=='edit' ? "active" : "" }}">
+                            <a href="{{ route('payroll_edit') }}"><i class="fa fa-angle-right text-blue"
+                                                                    style="width:5px"></i> Edit Payroll</a>
+                        </li>
+
                     </ul>
                 </li>
 
