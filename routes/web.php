@@ -30,9 +30,11 @@ Route::any('admin/employee/emp/add', 'Employee_admin@employee_add')->name('emplo
 Route::any('admin/employee/emp/{id}/edit', 'Employee_admin@employee_edit')->name('employee_edit');
 Route::get('admin/employee/emp/{id}/del', 'Employee_admin@employee_delete')->name('employee_delete');
 
+Route::post('admin/employee/emp/designation', 'Employee_admin@employee_by_designation')->name('employeeByDesignation');
+
 /*--------------------------payroll admin ------------------*/
 Route::any('admin/payroll/pay/', 'Payroll_admin@payroll')->name('payroll');
 Route::any('admin/payroll/view/', 'Payroll_admin@payroll_view')->name('payroll_view');
 Route::any('admin/payroll/add/', 'Payroll_admin@payroll_add')->name('payroll_add');
-Route::any('admin/payroll/edit/', 'Payroll_admin@payroll_edit')->name('payroll_edit');
-Route::any('admin/payroll/delete/', 'Payroll_admin@payroll_delete')->name('payroll_edit');
+Route::any('admin/payroll/edit/{id}', 'Payroll_admin@payroll_edit')->name('payroll_edit');
+Route::get('admin/payroll/delete/{id}', 'Payroll_admin@payroll_delete')->name('payroll_delete');

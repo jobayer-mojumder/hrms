@@ -157,11 +157,6 @@
                                                                  style="width:5px"></i> Add Payroll</a>
                         </li>
 
-                        <li class="{{ Request::segment(3)=='edit' ? "active" : "" }}">
-                            <a href="{{ route('payroll_edit') }}"><i class="fa fa-angle-right text-blue"
-                                                                    style="width:5px"></i> Edit Payroll</a>
-                        </li>
-
                     </ul>
                 </li>
 
@@ -196,6 +191,10 @@
 
 <script>
     $(document).ready(function () {
+
+        setTimeout(function(){
+            $('.alert-message').fadeOut( "slow" );
+        }, 5000);
 
         $('.date')
             .datepicker({

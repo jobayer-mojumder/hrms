@@ -11,4 +11,8 @@ class Officeinfo extends Model
     public function designation() {
         return $this->belongsTo(Designation::class);
     }
+
+    public function employee() {
+        return $this->belongsTo(Employee::class, 'emp_id', 'id');
+    }
 }

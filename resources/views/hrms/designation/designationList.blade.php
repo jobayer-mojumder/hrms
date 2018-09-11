@@ -10,7 +10,7 @@
 				<h4 class="box-title">Designation</h4>
 			</div>
 			@if(Session::has('smsg'))
-			<div class="col-sm-offset-3 col-sm-6">
+			<div class="col-sm-offset-3 col-sm-6 alert-message">
 				<div class="alert alert-success alert-dismissible">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 					<p><i class="icon fa fa-check"></i> {!! session('smsg') !!}</p>
@@ -19,10 +19,10 @@
 			@endif
 
 			@if(Session::has('emsg'))
-			<div class="col-sm-offset-3 col-sm-6">
+			<div class="col-sm-offset-3 col-sm-6 alert-message">
 				<div class="alert alert-danger alert-dismissible">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-					<h4><i class="icon fa fa-ban"></i> {!! session('smsg') !!}</h4>
+					<p><i class="icon fa fa-ban"></i> {!! session('emsg') !!}</p>
 				</div>
 			</div>		
 			@endif

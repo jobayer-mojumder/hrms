@@ -11,6 +11,17 @@
 			</div>
 			
 			<div class="col-sm-12">
+				@if ($errors->any())
+					<div class="col-sm-offset-3 col-sm-6 alert-message">
+						<div class="alert alert-danger alert-dismissible">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+							</button>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</div>
+					</div><br>
+				@endif
 				@if(Session::has('smsg'))
 				<div class="col-sm-offset-3 col-sm-6">
 					<div class="alert alert-success alert-dismissible">
@@ -24,7 +35,7 @@
 				<div class="col-sm-offset-3 col-sm-6">
 					<div class="alert alert-danger alert-dismissible">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-						<h4><i class="icon fa fa-ban"></i> {!! session('smsg') !!}</h4>
+						<p><i class="icon fa fa-ban"></i> {!! session('smsg') !!}</p>
 					</div>
 				</div>	
 				@endif
