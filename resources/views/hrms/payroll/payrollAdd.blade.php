@@ -72,10 +72,28 @@
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 salary-hide">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">Salary Information</h4>
+                            </div>
+                            <div class="box-body form-horizontal">
+                                <div class="form-group">
+                                    <label for="basic_salary" class="col-sm-4 control-label">Basic Salary</label>
+                                    <div class="col-sm-8">
+                                        <input value="" type="number" class="form-control" name="basic_salary"
+                                               id="basic_salary"
+                                               step=".01">
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="employment_type" class="col-sm-4 control-label">Employment Type</label>
-
                                     <div class="col-sm-8">
                                         <select class="form-control" name="employment_type" id="employment_type"
                                                 required="required">
@@ -95,14 +113,9 @@
                 <div class="col-sm-4 salary-hide">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h4 class="box-title">Salary Information</h4>
+                            <h4 class="box-title">Allowance Information</h4>
                         </div>
                         <div class="box-body">
-                            <div class="form-group">
-                                <label for="basic_salary">Basic Salary</label>
-                                <input value="" type="number" class="form-control" name="basic_salary" id="basic_salary"
-                                       step=".01">
-                            </div>
                             <div class="form-group">
                                 <label for="house_rent_allowance">House Rent Allowance</label>
                                 <input value="" type="number" class="form-control" name="house_rent_allowance"

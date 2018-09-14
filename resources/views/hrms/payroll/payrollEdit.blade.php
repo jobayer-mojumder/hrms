@@ -52,36 +52,50 @@
 
                             <p class="text-muted text-center">{{ $payroll->employee->officeinfo->designation->department->name }}
                                 - {{ $payroll->employee->officeinfo->designation->name }}</p>
-                            <div class="form-group" style="margin-top: 15px;">
-                                <label for="employment_type" class="col-sm-4 control-label">Employment Type</label>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
 
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="employment_type" id="employment_type"
-                                            required="required">
-                                        <option value="">Select</option>
-                                        <option value="1" {{ $payroll->employment_type === 1 ? 'selected':'' }}>Permanent</option>
-                                        <option value="2" {{ $payroll->employment_type === 2 ? 'selected':'' }}>Provision</option>
-                                        <option value="3" {{ $payroll->employment_type === 3 ? 'selected':'' }}>Intern</option>
+                <div class="col-sm-12">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">Salary Information</h4>
+                            </div>
+                            <div class="box-body form-horizontal">
+                                <div class="form-group">
+                                    <label for="basic_salary" class="col-sm-4 control-label">Basic Salary</label>
+                                    <div class="col-sm-8">
+                                        <input value="{{ $payroll->basic_salary }}" type="number" class="form-control" name="basic_salary"
+                                               id="basic_salary" step=".01">
+                                    </div>
+                                </div>
 
-                                    </select>
+                                <div class="form-group">
+                                    <label for="employment_type" class="col-sm-4 control-label">Employment Type</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="employment_type" id="employment_type"
+                                                required="required">
+                                            <option value="">Select</option>
+                                            <option value="1" {{ $payroll->employment_type === 1 ? 'selected':'' }}>Permanent</option>
+                                            <option value="2" {{ $payroll->employment_type === 2 ? 'selected':'' }}>Provision</option>
+                                            <option value="3" {{ $payroll->employment_type === 3 ? 'selected':'' }}>Intern</option>
+
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- /.box-body -->
                     </div>
                 </div>
 
                 <div class="col-sm-4">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h4 class="box-title">Salary Information</h4>
+                            <h4 class="box-title">Allowance Information</h4>
                         </div>
                         <div class="box-body">
-                            <div class="form-group">
-                                <label for="basic_salary">Basic Salary</label>
-                                <input value="{{ $payroll->basic_salary }}" type="number" class="form-control" name="basic_salary"
-                                       id="basic_salary" step=".01">
-                            </div>
                             <div class="form-group">
                                 <label for="house_rent_allowance">House Rent Allowance</label>
                                 <input value="{{ $payroll->house_rent_allowance }}" type="number" class="form-control" name="house_rent_allowance"

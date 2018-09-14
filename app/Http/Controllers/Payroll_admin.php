@@ -72,6 +72,14 @@ class Payroll_admin extends Controller
                     $payroll->provident_fund = $request->input('provident_fund');
                     $payroll->other_deduction = $request->input('other_deduction');
                     $payroll->employment_type = $request->input('employment_type');
+
+                    $payroll->total_allowance = $payroll->house_rent_allowance + $payroll->medical_allowance + $payroll->special_allowance +
+                        $payroll->fuel_allowance + $payroll->phone_bill_allowance + $payroll->other_allowance;
+                    $payroll->total_deduction = $payroll->tax_deduction + $payroll->provident_fund + $payroll->other_deduction;
+
+                    $payroll->gross_salary = $payroll->total_allowance + $payroll->basic_salary;
+                    $payroll->net_salary = $payroll->gross_salary - $payroll->total_deduction;
+
                     $payroll->emp_id = $employee_id;
 
                     if ($payroll->save()) {
@@ -126,12 +134,19 @@ class Payroll_admin extends Controller
                 $payroll->other_deduction = $request->input('other_deduction');
                 $payroll->employment_type = $request->input('employment_type');
 
+                $payroll->total_allowance = $payroll->house_rent_allowance + $payroll->medical_allowance + $payroll->special_allowance +
+                    $payroll->fuel_allowance + $payroll->phone_bill_allowance + $payroll->other_allowance;
+                $payroll->total_deduction = $payroll->tax_deduction + $payroll->provident_fund + $payroll->other_deduction;
+
+                $payroll->gross_salary = $payroll->total_allowance + $payroll->basic_salary;
+                $payroll->net_salary = $payroll->gross_salary - $payroll->total_deduction;
+
                 if ($payroll->update()) {
                     $request->session()->flash('smsg', 'Payroll updated Successfully!');
                     return redirect()->route('payroll');
                 } else {
                     $request->session()->flash('emsg', 'Payroll update failed!');
-                    return redirect()->route('payroll_edit', ['id'=>$id]);
+                    return redirect()->route('payroll_edit', ['id' => $id]);
                 }
             } else {
                 $payroll = Payroll::find($id);
@@ -140,18 +155,45 @@ class Payroll_admin extends Controller
         }
     }
 
-    public function payroll_view(Request $request, $id){
+    public function payroll_view(Request $request, $id)
+    {
         if (!$this->check_user()) {
             return redirect()->route('login');
         } else {
             $payroll = Payroll::find($id);
 
-            if (count($payroll)){
+            if (count($payroll)) {
                 return view('hrms.payroll.payrollView', ['payroll' => $payroll]);
-            }else{
+            } else {
                 $request->session()->flash('emsg', 'Payroll not found!');
                 return redirect()->route('payroll');
             }
+        }
+    }
+
+    public function employee_salary_info(Request $request)
+    {
+        if (!$this->check_user()) {
+            return redirect()->route('login');
+        } else {
+            $emp_id = $request->emp_id;
+            $payroll = Payroll::where('emp_id', $emp_id)->first();
+
+            if (count($payroll)){
+                echo json_encode($payroll);
+            }else{
+                echo 0;
+            }
+        }
+    }
+
+    public function make_payment(Request $request)
+    {
+        if (!$this->check_user()) {
+            return redirect()->route('login');
+        } else {
+            $data['departments'] = Department::all();
+            return view('hrms.payment.makePayment', $data);
         }
     }
 

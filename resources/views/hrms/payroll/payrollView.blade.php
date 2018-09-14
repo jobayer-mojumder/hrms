@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content-header')
-        <h1>Payroll Details</h1>
+    <h1>Payroll Details <span class="pull-right"><a href="{{ route('payroll_edit', ['id' => $payroll->id ]) }}">Edit this</a></span></h1>
 @endsection
 @section('content')
     <div class="col-sm-12">
@@ -50,7 +50,7 @@
                         <p class="text-muted text-center">{{ $payroll->employee->officeinfo->designation->department->name }}
                             - {{ $payroll->employee->officeinfo->designation->name }}</p>
 
-                        <p class="text-muted text-center">
+                        <p class="text-muted text-center">Employment Type -
                             @if($payroll->employment_type === 1)
                                 {{ 'Permanent' }}
                             @elseif($payroll->employment_type === 2)
@@ -90,14 +90,11 @@
             <div class="col-sm-6">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h4 class="box-title">Salary Information</h4>
+                        <h4 class="box-title">Allowance Information</h4>
                     </div>
                     <div class="box-body">
 
                         <ul class="list-group list-group-unbordered">
-                            <li class="list-group-item">
-                                <b> Basic Salary</b> <a class="pull-right">{{ $payroll->basic_salary }}</a>
-                            </li>
                             <li class="list-group-item">
                                 <b> House Rent Allowance</b> <a
                                         class="pull-right">{{ $payroll->house_rent_allowance }}</a>

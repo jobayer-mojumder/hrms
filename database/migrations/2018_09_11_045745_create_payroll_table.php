@@ -26,6 +26,10 @@ class CreatePayrollTable extends Migration
             $table->double('tax_deduction')->nullable(true);
             $table->double('provident_fund')->nullable(true);
             $table->double('other_deduction')->nullable(true);
+            $table->double('total_allowance')->nullable(false);
+            $table->double('total_deduction')->nullable(false);
+            $table->double('gross_salary')->nullable(false);
+            $table->double('net_salary')->nullable(false);
             $table->tinyInteger('employment_type')->nullable(false);
             $table->timestamps();
         });

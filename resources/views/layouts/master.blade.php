@@ -149,12 +149,31 @@
                     <ul class="treeview-menu">
                         <li class="{{ Request::segment(3)=='pay' ? "active" : "" }}">
                             <a href="{{ route('payroll') }}"><i class="fa fa-angle-right text-blue"
-                                                                 style="width:5px"></i> Manage Payroll</a>
+                                                                style="width:5px"></i> Manage Payroll</a>
                         </li>
 
                         <li class="{{ Request::segment(3)=='add' ? "active" : "" }}">
                             <a href="{{ route('payroll_add') }}"><i class="fa fa-angle-right text-blue"
-                                                                 style="width:5px"></i> Add Payroll</a>
+                                                                    style="width:5px"></i> Add Payroll</a>
+                        </li>
+
+                        <li class="{{ Request::segment(3)=='payment' ? "active" : "" }}">
+                            <a href="{{ route('make_payment') }}"><i class="fa fa-angle-right text-blue"
+                                                                    style="width:5px"></i> Make Payment</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="treeview {{ Request::segment(2)=='notice' ? "active" : "" }}">
+                    <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Payroll</span>
+                        <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="{{ Request::segment(3)=='pay' ? "active" : "" }}">
+                            <a href="{{ route('payroll') }}"><i class="fa fa-angle-right text-blue"
+                                                                style="width:5px"></i> Manage Payroll</a>
                         </li>
 
                     </ul>
@@ -195,8 +214,8 @@
 <script>
     $(document).ready(function () {
 
-        setTimeout(function(){
-            $('.alert-message').fadeOut( "slow" );
+        setTimeout(function () {
+            $('.alert-message').fadeOut("slow");
         }, 5000);
 
         $('.date')
