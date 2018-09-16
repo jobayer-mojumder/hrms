@@ -177,7 +177,7 @@
                         </li>
 
                         <li class="{{ Request::segment(3)=='notice_add' ? "active" : "" }}">
-                            <a href="{{ route('noticeAdd') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('notice_add') }}"><i class="fa fa-angle-right text-blue"
                                                                style="width:5px"></i> Add Notice</a>
                         </li>
 

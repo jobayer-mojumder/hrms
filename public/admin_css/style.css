@@ -65,3 +65,6 @@
 .alert-message .icon{
 	padding-right: 6px;
 }
+.no-border{
+	border: none;
+}

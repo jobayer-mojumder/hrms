@@ -206,8 +206,13 @@
                     data: {emp_id: emp_id},
                     success: function (data) {
                         if (data) {
-                            obj = JSON.parse(data);
-                            parseSalaryData(obj);
+                            if (data == '0'){
+                                hideSalary();
+                                alert('Not payroll found for this user.');
+                            }else{
+                                obj = JSON.parse(data);
+                                parseSalaryData(obj);
+                            }
                         }else{
                             alert("Payroll not found for this employee. Please create a payroll for this employee before payment.");
                         }
@@ -240,6 +245,9 @@
                 $('#payment_amount').val((net+bonus)-fine);
             }
 
+            function hideSalary(){
+                $('.salary-hide').hide();
+            }
         });
     </script>
 @endsection

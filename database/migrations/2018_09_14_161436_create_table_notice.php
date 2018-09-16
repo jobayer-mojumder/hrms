@@ -11,16 +11,11 @@ class CreateTableNotice extends Migration
     {
         Schema::create('notices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('department_id')->unsigned(true);
             $table->string('title');
             $table->text('short_details')->nullable(true);
             $table->text('details')->nullable(false);
             $table->integer('publish')->nullable(false);
             $table->timestamps();
-        });
-
-        Schema::table('notices', function($table){
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
         });
     }
 

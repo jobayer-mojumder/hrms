@@ -44,21 +44,9 @@
 
                     </div>
 
-                    <form class="form-horizontal" method="post" action="{{ route('noticeAdd') }}">
+                    <form class="form-horizontal" method="post" action="{{ route('notice_add') }}">
                         {{ csrf_field() }}
                         <div class="box-body">
-
-                            <div class="form-group">
-                                <label for="department_id" class="col-sm-2 control-label">Department</label>
-                                <div class="col-sm-4">
-                                    <select class="form-control" id="department_id" name="department_id">
-                                        <option value="0">All</option>
-                                        @foreach($departments as $department)
-                                            <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <label for="title" class="col-sm-2 control-label">Title</label>
@@ -72,7 +60,7 @@
                                 <label for="short_details" class="col-sm-2 control-label">Short Details</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" id="short_details"
-                                              name="description" required>{{ old('short_details') }}</textarea>
+                                              name="short_details" required>{{ old('short_details') }}</textarea>
                                 </div>
                             </div>
 

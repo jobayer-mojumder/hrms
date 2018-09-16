@@ -43,5 +43,7 @@ Route::any('admin/payroll/payment/', 'Payroll_admin@make_payment')->name('make_p
 Route::post('admin/payroll/salary/', 'Payroll_admin@employee_salary_info')->name('employeeSalaryInfo');
 
 Route::any('admin/notice/notice/', 'Notice_admin@notice')->name('notice');
-Route::any('admin/notice/notice_add', 'Notice_admin@notice_add')->name('noticeAdd');
-Route::any('admin/notice/notice_edit/{id}', 'Notice_admin@notice_edit')->name('noticeEdit');
+Route::any('admin/notice/notice_add', 'Notice_admin@notice_add')->name('notice_add');
+Route::any('admin/notice/notice_edit/{id}', 'Notice_admin@notice_edit')->name('notice_edit');
+Route::any('admin/notice/notice_delete/{id}', 'Notice_admin@notice_delete')->name('notice_delete');
+Route::any('admin/notice/notice_view/{id}', 'Notice_admin@notice_view')->name('notice_view');
