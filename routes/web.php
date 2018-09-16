@@ -41,3 +41,7 @@ Route::get('admin/payroll/delete/{id}', 'Payroll_admin@payroll_delete')->name('p
 
 Route::any('admin/payroll/payment/', 'Payroll_admin@make_payment')->name('make_payment');
 Route::post('admin/payroll/salary/', 'Payroll_admin@employee_salary_info')->name('employeeSalaryInfo');
+
+Route::any('admin/notice/notice/', 'Notice_admin@notice')->name('notice');
+Route::any('admin/notice/notice_add', 'Notice_admin@notice_add')->name('noticeAdd');
+Route::any('admin/notice/notice_edit/{id}', 'Notice_admin@notice_edit')->name('noticeEdit');

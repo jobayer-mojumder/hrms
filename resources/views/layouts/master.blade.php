@@ -166,14 +166,19 @@
                 </li>
 
                 <li class="treeview {{ Request::segment(2)=='notice' ? "active" : "" }}">
-                    <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Payroll</span>
+                    <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Notice</span>
                         <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
                     </a>
 
                     <ul class="treeview-menu">
-                        <li class="{{ Request::segment(3)=='pay' ? "active" : "" }}">
-                            <a href="{{ route('payroll') }}"><i class="fa fa-angle-right text-blue"
-                                                                style="width:5px"></i> Manage Payroll</a>
+                        <li class="{{ Request::segment(3)=='notice' ? "active" : "" }}">
+                            <a href="{{ route('notice') }}"><i class="fa fa-angle-right text-blue"
+                                                                style="width:5px"></i> All Notice</a>
+                        </li>
+
+                        <li class="{{ Request::segment(3)=='notice_add' ? "active" : "" }}">
+                            <a href="{{ route('noticeAdd') }}"><i class="fa fa-angle-right text-blue"
+                                                               style="width:5px"></i> Add Notice</a>
                         </li>
 
                     </ul>
