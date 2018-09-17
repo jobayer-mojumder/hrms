@@ -7,6 +7,7 @@ use App\Payroll;
 use App\Department;
 use App\User;
 use App\Payment_type;
+use App\Payment;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,7 +55,6 @@ class Payroll_admin extends Controller
                     'employee' => 'required|int',
                 ]);
                 $employee_id = $request->input('employee');
-
                 $payroll = Payroll::where('emp_id', $employee_id)->first();
 
                 if (count($payroll)) {
@@ -206,6 +206,20 @@ class Payroll_admin extends Controller
                     'payment_type' => 'required|int',
                 ]);
 
+                $employee_id = $request->input('employee');
+                $payroll = Payroll::where('emp_id', $employee_id)->first();
+
+                $payment = new Payment();
+                $payment->basic_salary = $payroll->basic_salary;
+                $payment->house_rent_allowance = $payroll->house_rent_allowance;
+                $payment->medical_allowance = $payroll->medical_allowance;
+                $payment->special_allowance = $payroll->special_allowance;
+                $payment->fuel_allowance = $payroll->fuel_allowance;
+                $payment->phone_bill_allowance = $payroll->phone_bill_allowance;
+                $payment->other_allowance = $payroll->other_allowance;
+                $payment->tax_deduction = $payroll->tax_deduction;
+                $payment->provident_fund = $payroll->provident_fund;
+                $payment->other_deduction = $payroll->other_deduction;
 
             }
         }
