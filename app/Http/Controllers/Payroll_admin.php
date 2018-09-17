@@ -188,6 +188,16 @@ class Payroll_admin extends Controller
         }
     }
 
+    public function payment(Request $request)
+    {
+        if (!$this->check_user()) {
+            return redirect()->route('login');
+        } else {
+            $data['payments'] = Payment::all();
+            return view('hrms.payment.paymentList', $data);
+        }
+    }
+
     public function payment_add(Request $request)
     {
         if (!$this->check_user()) {
@@ -197,11 +207,11 @@ class Payroll_admin extends Controller
 
                 $data['departments'] = Department::all();
                 $data['payment_types'] = Payment_type::all();
-                return view('hrms.payment.makePayment', $data);
+                return view('hrms.payment.paymentAdd', $data);
 
             } elseif ($request->isMethod('POST')) {
                 $request->validate([
-                    'date' => 'required|string',
+                    'payment_date' => 'required|string',
                     'employee' => 'required|int',
                     'payment_type' => 'required|int',
                 ]);
@@ -209,18 +219,131 @@ class Payroll_admin extends Controller
                 $employee_id = $request->input('employee');
                 $payroll = Payroll::where('emp_id', $employee_id)->first();
 
-                $payment = new Payment();
-                $payment->basic_salary = $payroll->basic_salary;
-                $payment->house_rent_allowance = $payroll->house_rent_allowance;
-                $payment->medical_allowance = $payroll->medical_allowance;
-                $payment->special_allowance = $payroll->special_allowance;
-                $payment->fuel_allowance = $payroll->fuel_allowance;
-                $payment->phone_bill_allowance = $payroll->phone_bill_allowance;
-                $payment->other_allowance = $payroll->other_allowance;
-                $payment->tax_deduction = $payroll->tax_deduction;
-                $payment->provident_fund = $payroll->provident_fund;
-                $payment->other_deduction = $payroll->other_deduction;
+                if (count($payroll)) {
+                    $payment = new Payment();
+                    $payment->emp_id = $payroll->emp_id;
+                    $payment->basic_salary = $payroll->basic_salary;
+                    $payment->house_rent_allowance = $payroll->house_rent_allowance;
+                    $payment->medical_allowance = $payroll->medical_allowance;
+                    $payment->special_allowance = $payroll->special_allowance;
+                    $payment->fuel_allowance = $payroll->fuel_allowance;
+                    $payment->phone_bill_allowance = $payroll->phone_bill_allowance;
+                    $payment->other_allowance = $payroll->other_allowance;
+                    $payment->tax_deduction = $payroll->tax_deduction;
+                    $payment->provident_fund = $payroll->provident_fund;
+                    $payment->other_deduction = $payroll->other_deduction;
+                    $payment->total_allowance = $payroll->total_allowance;
+                    $payment->total_deduction = $payroll->total_deduction;
+                    $payment->gross_salary = $payroll->gross_salary;
+                    $payment->net_salary = $payroll->net_salary;
+                    $payment->bonus = $request->input('bonus');
+                    $payment->fine_deduction = $request->input('fine_deduction');
+                    $payment->total_payable = ($payment->bonus + $payment->net_salary) - $payment->fine_deduction;
+                    $payment->payment_amount = $request->input('payment_amount');
+                    $payment->payment_type = $request->input('payment_type');
+                    $payment->payment_due = $payment->total_payable - $payment->payment_amount;
+                    $payment->payment_for_month = date('Y-m', strtotime($request->input('payment_date')));
+                    $payment->comments = $request->input('comments');
 
+                    if ($payment->save()) {
+                        $request->session()->flash('smsg', 'Payment save successfully!');
+                        return redirect()->route('payment');
+                    } else {
+                        $request->session()->flash('emsg', 'Payment failed!');
+                        $data['departments'] = Department::all();
+                        $data['payment_types'] = Payment_type::all();
+                        return view('hrms.payment.paymentAdd', $data);
+                    }
+                } else {
+                    $request->session()->flash('emsg', 'Payroll not found for this employee!');
+                    $data['departments'] = Department::all();
+                    $data['payment_types'] = Payment_type::all();
+                    return view('hrms.payment.paymentAdd', $data);
+                }
+
+            }
+        }
+    }
+
+    public function payment_edit(Request $request, $id)
+    {
+        if (!$this->check_user()) {
+            return redirect()->route('login');
+        } else {
+            if ($request->isMethod('GET')) {
+
+                $data['payment'] = Payment::find($id);
+                $data['payment_types'] = Payment_type::all();
+
+                if ($data['payment']){
+                    return view('hrms.payment.paymentEdit', $data);
+                }else{
+                    $request->session()->flash('emsg', 'Payment not found!');
+                    return redirect()->route('payment');
+                }
+
+            } elseif ($request->isMethod('POST')) {
+                $request->validate([
+                    'payment_date' => 'required|string',
+                    'payment_type' => 'required|int',
+                ]);
+
+                $payment = Payment::find($id);
+                $payroll = Payroll::where('emp_id', $payment->emp_id)->first();
+
+                if($payroll){
+                    $payment->bonus = $request->input('bonus');
+                    $payment->fine_deduction = $request->input('fine_deduction');
+                    $payment->total_payable = ($payment->bonus + $payment->net_salary) - $payment->fine_deduction;
+                    $payment->payment_amount = $request->input('payment_amount');
+                    $payment->payment_type = $request->input('payment_type');
+                    $payment->payment_due = $payment->total_payable - $payment->payment_amount;
+                    $payment->payment_for_month = date('Y-m', strtotime($request->input('payment_date')));
+                    $payment->comments = $request->input('comments');
+
+                    if ($payment->update()){
+                        $request->session()->flash('smsg', 'Payment updated successfully!');
+                        return redirect()->route('payment');
+                    }else{
+                        $request->session()->flash('emsg', 'Payment update failed!');
+                        return redirect()->route('payment_edit', ['id'=>$id]);
+                    }
+                }else{
+                    $request->session()->flash('emsg', 'Payroll not found for this employee!');
+                    return redirect()->route('payment');
+                }
+            }
+        }
+    }
+
+    public function payment_delete(Request $request, $id)
+    {
+        if (!$this->check_user()) {
+            return redirect()->route('login');
+        } else {
+            $payment = Payment::find($id);
+            if ($payment->delete()) {
+                $request->session()->flash('smsg', 'Payment deleted Successfully!');
+                return redirect()->route('payment');
+            } else {
+                $request->session()->flash('emsg', 'Payment deleted Failed!');
+                return redirect()->route('payment');
+            }
+        }
+    }
+
+    public function payment_view(Request $request, $id)
+    {
+        if (!$this->check_user()) {
+            return redirect()->route('login');
+        } else {
+            $payment = Payment::find($id);
+
+            if (count($payment)) {
+                return view('hrms.payment.paymentView', ['payment' => $payment]);
+            } else {
+                $request->session()->flash('emsg', 'Payment not found!');
+                return redirect()->route('payment');
             }
         }
     }

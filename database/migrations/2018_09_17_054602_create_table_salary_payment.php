@@ -34,8 +34,9 @@ class CreateTableSalaryPayment extends Migration
             $table->double('fine_deduction')->nullable(false);
             $table->double('total_payable')->nullable(false);
             $table->double('payment_amount')->nullable(false);
+            $table->double('payment_due')->nullable(false);
             $table->integer('payment_type')->unsigned(true);
-            $table->integer('payment_for_month')->nullable(false);
+            $table->string('payment_for_month')->nullable(false);
             $table->text('comments')->nullable(true);
             $table->timestamps();
         });

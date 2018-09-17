@@ -11,4 +11,9 @@ class Payment extends Model
     public function employee() {
         return $this->belongsTo(Employee::class, 'emp_id', 'id');
     }
+
+    public function paymentType() {
+        return $this->belongsTo(Payment_type::class, 'payment_type', 'id');
+    }
+
 }
