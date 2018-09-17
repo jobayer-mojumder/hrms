@@ -6,6 +6,7 @@ use App\Employee;
 use App\Payroll;
 use App\Department;
 use App\User;
+use App\Payment_type;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -179,21 +180,34 @@ class Payroll_admin extends Controller
             $emp_id = $request->emp_id;
             $payroll = Payroll::where('emp_id', $emp_id)->first();
 
-            if (count($payroll)){
+            if (count($payroll)) {
                 echo json_encode($payroll);
-            }else{
+            } else {
                 echo 0;
             }
         }
     }
 
-    public function make_payment(Request $request)
+    public function payment_add(Request $request)
     {
         if (!$this->check_user()) {
             return redirect()->route('login');
         } else {
-            $data['departments'] = Department::all();
-            return view('hrms.payment.makePayment', $data);
+            if ($request->isMethod('GET')) {
+
+                $data['departments'] = Department::all();
+                $data['payment_types'] = Payment_type::all();
+                return view('hrms.payment.makePayment', $data);
+
+            } elseif ($request->isMethod('POST')) {
+                $request->validate([
+                    'date' => 'required|string',
+                    'employee' => 'required|int',
+                    'payment_type' => 'required|int',
+                ]);
+
+
+            }
         }
     }
 

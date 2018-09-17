@@ -35,7 +35,7 @@
     </div>
     <section class="content">
         <div class="row">
-            <form method="post" action="{{ route('payroll_add') }}">
+            <form method="post" action="{{ route('payment_add') }}">
                 {{ csrf_field() }}
                 <div class="col-sm-12">
                     <div class="col-sm-6 col-md-offset-3">
@@ -77,8 +77,8 @@
                                     <label for="inputPassword3" class="col-sm-4 control-label">Date</label>
                                     <div class="col-sm-8">
                                         <div class="input-group input-append date" id="date" style="width:200px;">
-                                            <input type="text" class="form-control" name="date" id="date"
-                                                   readonly="readonly" value="{{ old('date') }}" required/>
+                                            <input type="text" class="form-control" name="payment_date" id="date"
+                                                   readonly="readonly" value="{{ old('payment_date') }}" required/>
                                             <span class="input-group-addon add-on"><span
                                                         class="glyphicon glyphicon-calendar" id="date"></span></span>
                                         </div>
@@ -146,13 +146,33 @@
                                     <div class="col-sm-8">
                                         <input value="" type="number" class="form-control" name="payment_amount"
                                                id="payment_amount"
-                                               step=".01">
+                                               step=".01" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="payment_type" class="col-sm-4 control-label">Payment Type</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="payment_type"
+                                                id="payment_type" required>
+                                            <option value="">select</option>
+                                            @foreach($payment_types as $row)
+                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="comments" class="col-sm-4 control-label">Comments</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="comments" id="comments" class="form-control"></textarea>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="box-footer">
-                                <button type="button" class="btn btn-info pull-right">Save</button>
+                                <button type="submit" class="btn btn-info pull-right">Save</button>
                             </div>
                         </div>
                     </div>

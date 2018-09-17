@@ -158,7 +158,7 @@
                         </li>
 
                         <li class="{{ Request::segment(3)=='payment' ? "active" : "" }}">
-                            <a href="{{ route('make_payment') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('payment_add') }}"><i class="fa fa-angle-right text-blue"
                                                                     style="width:5px"></i> Make Payment</a>
                         </li>
 
