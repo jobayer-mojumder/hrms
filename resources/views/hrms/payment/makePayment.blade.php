@@ -72,6 +72,19 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-4 control-label">Date</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group input-append date" id="date" style="width:200px;">
+                                            <input type="text" class="form-control" name="date" id="date"
+                                                   readonly="readonly" value="{{ old('date') }}" required/>
+                                            <span class="input-group-addon add-on"><span
+                                                        class="glyphicon glyphicon-calendar" id="date"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -115,7 +128,7 @@
                                     <div class="col-sm-8">
                                         <input value="" type="number" class="form-control" name="bonus"
                                                id="bonus"
-                                               step=".01" >
+                                               step=".01">
                                     </div>
                                 </div>
 
@@ -124,7 +137,7 @@
                                     <div class="col-sm-8">
                                         <input value="" type="number" class="form-control" name="fine_deduction"
                                                id="fine_deduction"
-                                               step=".01" >
+                                               step=".01">
                                     </div>
                                 </div>
 
@@ -133,7 +146,7 @@
                                     <div class="col-sm-8">
                                         <input value="" type="number" class="form-control" name="payment_amount"
                                                id="payment_amount"
-                                               step=".01" >
+                                               step=".01">
                                     </div>
                                 </div>
 
@@ -206,21 +219,21 @@
                     data: {emp_id: emp_id},
                     success: function (data) {
                         if (data) {
-                            if (data == '0'){
+                            if (data == '0') {
                                 hideSalary();
-                                alert('Not payroll found for this user.');
-                            }else{
+                                alert('No payroll found for this user.');
+                            } else {
                                 obj = JSON.parse(data);
                                 parseSalaryData(obj);
                             }
-                        }else{
+                        } else {
                             alert("Payroll not found for this employee. Please create a payroll for this employee before payment.");
                         }
                     }
                 });
             }
 
-            function parseSalaryData(data){
+            function parseSalaryData(data) {
                 $('#gross_salary').val(data['gross_salary']);
                 $('#total_deduction').val(data['total_deduction']);
                 $('#net_salary').val(data['net_salary']);
@@ -237,17 +250,33 @@
                 salaryCalculation();
             });
 
-            function salaryCalculation(){
+            function salaryCalculation() {
                 let net = parseFloat($('#net_salary').val());
                 let bonus = parseFloat($('#bonus').val());
                 let fine = parseFloat($('#fine_deduction').val());
 
-                $('#payment_amount').val((net+bonus)-fine);
+                $('#payment_amount').val((net + bonus) - fine);
             }
 
-            function hideSalary(){
+            function hideSalary() {
                 $('.salary-hide').hide();
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#date')
+                .datepicker({
+                    format: "yyyy-mm",
+                    startView: "months",
+                    minViewMode: "months",
+                    autoclose: true,
+                    clearBtn: true,
+                    showClose: true,
+                })
+
         });
     </script>
 @endsection

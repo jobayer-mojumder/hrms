@@ -43,7 +43,10 @@
                         </div>
                         <div class="box-footer">
                             <div class="col-sm-12">
-                                <div class="col-sm-1 col-md-offset-11">
+                                <div class="col-sm-1">
+                                    <a href="{{ route('notice') }}" class="btn btn-info"> Back</a>
+                                </div>
+                                <div class="col-sm-1 col-md-offset-10">
                                     <a href="{{ route('notice_edit', ['id' => $notice->id ]) }}" class="btn btn-info"> Edit Info</a>
                                 </div>
                             </div>
