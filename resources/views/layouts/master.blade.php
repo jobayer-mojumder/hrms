@@ -43,7 +43,11 @@
                 document.location = location;
         }
     </script>
-
+    <style>
+        a {
+            color: #2485bd;
+        }
+    </style>
     @yield('header')
 </head>
 
@@ -86,7 +90,7 @@
                                     <img src="{{ asset('public/admin_css/dist/img/avatar5.png') }}" class="img-circle"
                                          alt="User Image"> @endif
                                 <p>{{ Auth::user()->name }} </p>
-                                <p style="font-size: 14px;">Authentication Level: {{ ucfirst(Auth::user()->group) }}</p>
+                                <p style="font-size: 14px;">Authentication Level: {{ Auth::user()->group == 1 ? 'Super Admin': 'Admin' }}</p>
                             </li>
                             <li class="user-body">
                                 <div class="row">
