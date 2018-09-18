@@ -148,8 +148,43 @@ class Company_admin extends Controller
                 $settings->email = $request->input('email');
                 $settings->fax = $request->input('fax');
                 $settings->website = $request->input('website');
-                $settings->logo = $request->input('logo');
-                $settings->logo_path = $request->input('logo_path');
+
+                if (Input::hasFile('logo')) {
+                    $logo = $request->file('logo');
+                    $logoname = time() . '_' . $logo->getClientOriginalname();
+                    $thumb = 'thumb_' . $logoname;
+
+                    $destinationPath = 'public/assets/company';
+                    $img = Image::make($logo->getRealPath())->resize(200, 50);
+
+                    $img->save($destinationPath . '/' . $thumb);
+                    $logo->move($destinationPath, $logoname);
+                    $logo = $logoname;
+                    $thumb = $thumb;
+                    $path = 'public/assets/company/';
+
+                    if ($settings->logo) {
+                        $delete = $settings->logo_path . $settings->logo;
+                        $delete2 = $settings->logo_path . $settings->thumb;
+                        if (File::exists($delete)) {
+                            unlink($delete);
+                        }
+                        if (File::exists($delete2)) {
+                            unlink($delete2);
+                        }
+                    }
+                    $settings->logo = $logo;
+                    $settings->thumb = $thumb;
+                    $settings->logo_path = $path;
+                }
+
+                if ($settings->update()) {
+                    $request->session()->flash('smsg', 'Settings info edited!');
+                    return redirect()->route('settings');
+                } else {
+                    $request->session()->flash('emsg', 'Settings update failed!');
+                    return redirect()->route('settings');
+                }
             }
         }
     }

@@ -22,6 +22,7 @@ class CreateTableSettings extends Migration
             $table->string('fax')->nullable(true);
             $table->string('website')->nullable(true);
             $table->string('logo')->nullable(true);
+            $table->string('thumb')->nullable(true);
             $table->string('logo_path')->nullable(true);
             $table->timestamps();
         });

@@ -53,7 +53,7 @@
                                 <label for="name" class="col-sm-2 control-label">Company Name</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="name" name="name" placeholder=""
-                                           required value="{{ old('name') }}">
+                                           required value="{{ $settings->name }}">
                                 </div>
                             </div>
 
@@ -61,7 +61,7 @@
                                 <label for="address" class="col-sm-2 control-label">Address</label>
                                 <div class="col-sm-6">
                                     <textarea class="form-control" id="address"
-                                              name="address">{{ old('address') }}</textarea>
+                                              name="address">{{ $settings->address }}</textarea>
                                 </div>
                             </div>
 
@@ -69,7 +69,7 @@
                                 <label for="email" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="email" name="email" placeholder=""
-                                           value="{{ old('email') }}">
+                                           value="{{ $settings->email }}">
                                 </div>
                             </div>
 
@@ -77,7 +77,7 @@
                                 <label for="phone" class="col-sm-2 control-label">Phone</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="phone" name="phone" placeholder=""
-                                           value="{{ old('phone') }}">
+                                           value="{{ $settings->phone }}">
                                 </div>
                             </div>
 
@@ -85,7 +85,7 @@
                                 <label for="website" class="col-sm-2 control-label">Website</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="website" name="website" placeholder=""
-                                           value="{{ old('website') }}">
+                                           value="{{ $settings->website }}">
                                 </div>
                             </div>
 
@@ -93,20 +93,12 @@
                                 <label for="fax" class="col-sm-2 control-label">Fax</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="fax" name="fax" placeholder=""
-                                           value="{{ old('fax') }}">
+                                           value="{{ $settings->fax }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="phone" class="col-sm-2 control-label">Phone</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="phone" name="phone" placeholder=""
-                                           required value="{{ old('phone') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="logo" class="col-sm-2 control-label">logo</label>
+                                <label for="logo" class="col-sm-2 control-label">Company Logo</label>
                                 <div class="col-sm-6">
                                     <input value="" class="form-control" type="file" id="logo" name="logo">
                                     <div class="image-emp">
@@ -117,7 +109,7 @@
                                                 $src =  asset('public/assets/employee') .'/no_images.png';
                                             }
                                         @endphp
-                                        <img src="{{ asset($src) }}" height="155px">
+                                        <img src="{{ asset($src) }}" width="200px">
                                     </div>
                                 </div>
                             </div>
