@@ -23,7 +23,7 @@
                             </div><br>
                         @endif
                         @if(Session::has('smsg'))
-                            <div class="col-sm-offset-3 col-sm-6">
+                            <div class="col-sm-offset-3 col-sm-6 alert-message">
                                 <div class="alert alert-success alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
                                     </button>
@@ -33,7 +33,7 @@
                         @endif
 
                         @if(Session::has('emsg'))
-                            <div class="col-sm-offset-3 col-sm-6">
+                            <div class="col-sm-offset-3 col-sm-6 alert-message">
                                 <div class="alert alert-danger alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
                                     </button>
@@ -119,7 +119,7 @@
                         <div class="box-footer">
                             <div class="col-sm-12">
                                 <div class="col-sm-4 col-md-offset-4">
-                                    <button type="submit" class="btn btn-info"> Save</button>
+                                    <button type="submit" class="btn btn-info"> Update</button>
                                 </div>
                             </div>
                         </div>
