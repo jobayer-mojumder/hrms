@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Input;
 use Image;
 use App\User;
 use App\Leave;
+use App\Settings;
 
 class Company_admin extends Controller
 {
@@ -24,7 +25,8 @@ class Company_admin extends Controller
         $this->middleware('auth');
     }
 
-    public function check_user() {
+    public function check_user()
+    {
         if (Auth::check()) {
             if (Auth::user()->group == 1) {
                 return 1;
@@ -36,10 +38,11 @@ class Company_admin extends Controller
         }
     }
 
-    public function leave(Request $request){
+    public function leave(Request $request)
+    {
         if (!$this->check_user()) {
             redirect('logout');
-        }else{
+        } else {
             $data['leaves'] = Leave::all();
             return view('hrms.leave.leaveList', $data);
         }
@@ -80,7 +83,7 @@ class Company_admin extends Controller
 
     public function leave_edit(Request $request, $id)
     {
-        if (Auth::check()) {
+        if ($this->check_user()) {
             if ($request->isMethod('get')) {
 
                 $data['leave'] = Leave::find($id);
@@ -112,7 +115,7 @@ class Company_admin extends Controller
 
     public function leave_delete(Request $request, $id)
     {
-        if (Auth::check()) {
+        if ($this->check_user()) {
             if ($id) {
                 $leave = Leave::find($id);
                 if ($leave->delete()) {
@@ -125,6 +128,29 @@ class Company_admin extends Controller
             }
         } else {
             return redirect()->route('login');
+        }
+    }
+
+    public function settings(Request $request)
+    {
+        if (!$this->check_user()) {
+            redirect('logout');
+        } else {
+            if ($request->isMethod('GET')) {
+                $data['settings'] = Settings::all()->first();
+                return view('hrms.settings', $data);
+            } elseif ($request->isMethod('POST')) {
+                $settings = Settings::all()->first();
+
+                $settings->name = $request->input('name');
+                $settings->address = $request->input('address');
+                $settings->phone = $request->input('phone');
+                $settings->email = $request->input('email');
+                $settings->fax = $request->input('fax');
+                $settings->website = $request->input('website');
+                $settings->logo = $request->input('logo');
+                $settings->logo_path = $request->input('logo_path');
+            }
         }
     }
 

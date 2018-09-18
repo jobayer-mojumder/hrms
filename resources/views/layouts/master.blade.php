@@ -124,7 +124,7 @@
 
                     <ul class="treeview-menu">
                         <li class="{{ Request::segment(3)=='settings' ? "active" : "" }}">
-                            <a href="#"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('settings') }}"><i class="fa fa-angle-right text-blue"
                                                                  style="width:5px"></i> Settings</a>
                         </li>
 

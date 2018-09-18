@@ -81,7 +81,7 @@ class Employee_admin extends Controller
 
     public function department_edit(Request $request, $id)
     {
-        if (Auth::check()) {
+        if ($this->check_user()) {
             if ($request->isMethod('get')) {
 
                 $department = Department::find($id);
@@ -112,7 +112,7 @@ class Employee_admin extends Controller
 
     public function department_delete(Request $request, $id)
     {
-        if (Auth::check()) {
+        if ($this->check_user()) {
             if ($id) {
                 $department = Department::find($id);
                 if ($department->delete()) {
@@ -178,7 +178,7 @@ class Employee_admin extends Controller
 
     public function designation_edit(Request $request, $id)
     {
-        if (Auth::check()) {
+        if ($this->check_user()) {
             if ($request->isMethod('get')) {
 
                 $data['designation'] = Designation::find($id);
@@ -214,7 +214,7 @@ class Employee_admin extends Controller
 
     public function designation_delete(Request $request, $id)
     {
-        if (Auth::check()) {
+        if ($this->check_user()) {
             if ($id) {
                 $designation = Designation::find($id);
                 if ($designation->delete()) {
