@@ -49,8 +49,13 @@
 <div class="wrapper">
     <header class="main-header">
         <a href="{{ route('admin') }}" class="logo">
-            <span class="logo-mini"></span>
-            <span class="logo-lg"><b><font style="text-transform:uppercase; color:#005BAA">HRMS</font></b></span>
+            <span class="logo-mini"><b>HRMS</b></span>
+            @if(Session::get('settings')['logo'])
+                <span class="logo-lg"><img style="width: 100%;"
+                            src="{{ asset(Session::get('settings')['logo_path']).'/'.Session::get('settings')['thumb'] }}"></span>
+            @else
+                <span class="logo-lg"><b>HRMS</b></span>
+            @endif
         </a>
         <nav class="navbar navbar-static-top" role="navigation">
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -130,12 +135,12 @@
 
                         <li class="{{ Request::segment(3)=='leave' ? "active" : "" }}">
                             <a href="{{ route('leave') }}"><i class="fa fa-angle-right text-blue"
-                                                                   style="width:5px"></i> Leave Category</a>
+                                                              style="width:5px"></i> Leave Category</a>
                         </li>
 
                         <li class="{{ Request::segment(3)=='department' ? "active" : "" }}">
                             <a href="#"><i class="fa fa-angle-right text-blue"
-                                                                   style="width:5px"></i> Working Days</a>
+                                           style="width:5px"></i> Working Days</a>
                         </li>
                     </ul>
                 </li>

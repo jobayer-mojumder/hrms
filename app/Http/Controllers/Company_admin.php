@@ -11,7 +11,7 @@ namespace App\Http\Controllers;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Image;
 use App\User;
@@ -155,7 +155,7 @@ class Company_admin extends Controller
                     $thumb = 'thumb_' . $logoname;
 
                     $destinationPath = 'public/assets/company';
-                    $img = Image::make($logo->getRealPath())->resize(200, 50);
+                    $img = Image::make($logo->getRealPath())->resize(230, 50);
 
                     $img->save($destinationPath . '/' . $thumb);
                     $logo->move($destinationPath, $logoname);
@@ -179,6 +179,7 @@ class Company_admin extends Controller
                 }
 
                 if ($settings->update()) {
+                    Session::put('settings', $settings);
                     $request->session()->flash('smsg', 'Settings info edited!');
                     return redirect()->route('settings');
                 } else {

@@ -22,7 +22,11 @@
     <div class="login-box">
         <br />
         <div class="login-logo" style="background:#FFFFFF ">
-            <h2 class="text-center" style="background:#FBFBFB; color:#005BAA; padding-top:0px; margin-top:0px;"> HRMS</h2>
+            @if(Session::get('settings')['logo'])
+                <a href="#"><img src="{{ asset(Session::get('settings')['logo_path']).'/'.Session::get('settings')['thumb'] }}"></a>
+            @endif
+            <h2 class="text-center"
+                style="background:#FBFBFB; color:#005BAA; padding-top:0px; margin-top: 10px; margin-bottom: 0px;"> {{ Session::get('settings')['name'] }}</h2>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">

@@ -12,7 +12,7 @@
 
                     <div class="col-sm-12">
                         @if ($errors->any())
-                            <div class="col-sm-offset-3 col-sm-6 alert-message">
+                            <div class="col-sm-offset-2 col-sm-6 alert-message">
                                 <div class="alert alert-danger alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
                                     </button>
@@ -23,7 +23,7 @@
                             </div><br>
                         @endif
                         @if(Session::has('smsg'))
-                            <div class="col-sm-offset-3 col-sm-6 alert-message">
+                            <div class="col-sm-offset-2 col-sm-6 alert-message">
                                 <div class="alert alert-success alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
                                     </button>
@@ -33,7 +33,7 @@
                         @endif
 
                         @if(Session::has('emsg'))
-                            <div class="col-sm-offset-3 col-sm-6 alert-message">
+                            <div class="col-sm-offset-2 col-sm-6 alert-message">
                                 <div class="alert alert-danger alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
                                     </button>

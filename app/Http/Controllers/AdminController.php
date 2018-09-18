@@ -14,8 +14,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 use Image;
 use app\User;
+use App\Settings;
 
 class AdminController extends Controller {
 	/**
@@ -26,6 +28,8 @@ class AdminController extends Controller {
 	 */
 	public function __construct() {
 		$this->middleware('auth');
+        $settings = Settings::all()->first();
+        Session::put('settings', $settings);
 	}
 
 	public function check_user() {
@@ -41,6 +45,7 @@ class AdminController extends Controller {
 	}
 
 	public function index(Request $request) {
+
 		if (!$this->check_user()) {
 			redirect('logout');
 		} else {
