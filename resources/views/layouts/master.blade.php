@@ -43,6 +43,8 @@
                 document.location = location;
         }
     </script>
+
+    @yield('header')
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -122,47 +124,53 @@
             <ul class="sidebar-menu">
                 <li class="header"> CONTROL PANEL</li>
 
+                <li class="{{ Request::segment(2)=='' ? "active" : "" }}">
+                    <a href="{{ route('admin') }}"><i class="fa fa-certificate text-custom"></i> <span>Dashboard</span>
+                    </a>
+                </li>
+
+
                 <li class="treeview {{ Request::segment(2)=='company' ? "active" : "" }}">
-                    <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Company</span>
+                    <a href="#"><i class="fa fa-certificate text-custom"></i> <span>Company</span>
                         <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
                     </a>
 
                     <ul class="treeview-menu">
                         <li class="{{ Request::segment(3)=='settings' ? "active" : "" }}">
-                            <a href="{{ route('settings') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('settings') }}"><i class="fa fa-angle-right text-custom"
                                                                  style="width:5px"></i> Settings</a>
                         </li>
 
                         <li class="{{ Request::segment(3)=='leave' ? "active" : "" }}">
-                            <a href="{{ route('leave') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('leave') }}"><i class="fa fa-angle-right text-custom"
                                                               style="width:5px"></i> Leave Category</a>
                         </li>
 
                         <li class="{{ Request::segment(3)=='department' ? "active" : "" }}">
-                            <a href="#"><i class="fa fa-angle-right text-blue"
+                            <a href="#"><i class="fa fa-angle-right text-custom"
                                            style="width:5px"></i> Working Days</a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="treeview {{ Request::segment(2)=='employee' ? "active" : "" }}">
-                    <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Employee</span>
+                    <a href="#"><i class="fa fa-certificate text-custom"></i> <span>Employee</span>
                         <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
                     </a>
 
                     <ul class="treeview-menu">
                         <li class="{{ Request::segment(3)=='emp' ? "active" : "" }}">
-                            <a href="{{ route('employee') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('employee') }}"><i class="fa fa-angle-right text-custom"
                                                                  style="width:5px"></i> Employees</a>
                         </li>
 
                         <li class="{{ Request::segment(3)=='department' ? "active" : "" }}">
-                            <a href="{{ route('department') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('department') }}"><i class="fa fa-angle-right text-custom"
                                                                    style="width:5px"></i> Departments</a>
                         </li>
 
                         <li class="{{ Request::segment(3)=='designation' ? "active" : "" }}">
-                            <a href="{{ route('designation') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('designation') }}"><i class="fa fa-angle-right text-custom"
                                                                     style="width:5px"></i> Designations</a>
                         </li>
                     </ul>
@@ -170,18 +178,18 @@
 
 
                 <li class="treeview {{ Request::segment(2)=='payroll' ? "active" : "" }}">
-                    <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Payroll</span>
+                    <a href="#"><i class="fa fa-certificate text-custom"></i> <span>Payroll</span>
                         <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
                     </a>
 
                     <ul class="treeview-menu">
                         <li class="{{ Request::segment(3)=='pay' ? "active" : "" }}">
-                            <a href="{{ route('payroll') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('payroll') }}"><i class="fa fa-angle-right text-custom"
                                                                 style="width:5px"></i> Manage Payroll</a>
                         </li>
 
                         <li class="{{ Request::segment(3)=='add' ? "active" : "" }}">
-                            <a href="{{ route('payroll_add') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('payroll_add') }}"><i class="fa fa-angle-right text-custom"
                                                                     style="width:5px"></i> Add Payroll</a>
                         </li>
 
@@ -192,12 +200,12 @@
                                             class="fa fa-angle-left pull-right"></i></span></a>
                             <ul class="treeview-menu">
                                 <li class="{{ Request::segment(4)=='all' ? "active" : "" }}">
-                                    <a href="{{ route('payment') }}"><i class="fa fa-angle-right text-blue"
+                                    <a href="{{ route('payment') }}"><i class="fa fa-angle-right text-custom"
                                                                         style="width:5px"></i> All Payment</a>
                                 </li>
 
                                 <li class="{{ Request::segment(4)=='payment_add' ? "active" : "" }}">
-                                    <a href="{{ route('payment_add') }}"><i class="fa fa-angle-right text-blue"
+                                    <a href="{{ route('payment_add') }}"><i class="fa fa-angle-right text-custom"
                                                                             style="width:5px"></i> Make Payment</a>
                                 </li>
                             </ul>
@@ -205,18 +213,18 @@
                     </ul>
 
                 <li class="treeview {{ Request::segment(2)=='notice' ? "active" : "" }}">
-                    <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Notice</span>
+                    <a href="#"><i class="fa fa-certificate text-custom"></i> <span>Notice</span>
                         <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
                     </a>
 
                     <ul class="treeview-menu">
                         <li class="{{ Request::segment(3)=='notice' ? "active" : "" }}">
-                            <a href="{{ route('notice') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('notice') }}"><i class="fa fa-angle-right text-custom"
                                                                style="width:5px"></i> All Notice</a>
                         </li>
 
                         <li class="{{ Request::segment(3)=='notice_add' ? "active" : "" }}">
-                            <a href="{{ route('notice_add') }}"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('notice_add') }}"><i class="fa fa-angle-right text-custom"
                                                                    style="width:5px"></i> Add Notice</a>
                         </li>
 
