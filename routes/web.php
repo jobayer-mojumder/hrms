@@ -59,3 +59,5 @@ Route::any('admin/company/leave_edit/{id}', 'Company_admin@leave_edit')->name('l
 Route::any('admin/company/leave_delete/{id}', 'Company_admin@leave_delete')->name('leave_delete');
 
 Route::any('admin/company/settings/', 'Company_admin@settings')->name('settings');
+
+Route::any('admin/company/working_days/', 'Company_admin@working')->name('working');

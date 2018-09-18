@@ -17,6 +17,7 @@ use Image;
 use App\User;
 use App\Leave;
 use App\Settings;
+use App\Working_day;
 
 class Company_admin extends Controller
 {
@@ -138,7 +139,7 @@ class Company_admin extends Controller
         } else {
             if ($request->isMethod('GET')) {
                 $data['settings'] = Settings::all()->first();
-                return view('hrms.settings', $data);
+                return view('hrms.company.settings', $data);
             } elseif ($request->isMethod('POST')) {
                 $settings = Settings::all()->first();
 
@@ -186,6 +187,37 @@ class Company_admin extends Controller
                     $request->session()->flash('emsg', 'Settings update failed!');
                     return redirect()->route('settings');
                 }
+            }
+        }
+    }
+
+    public function working(Request $request)
+    {
+        if (!$this->check_user()) {
+            redirect('logout');
+        } else {
+            if ($request->isMethod('GET')) {
+                $data['working'] = Working_day::all();
+                return view('hrms.company.working', $data);
+            } elseif ($request->isMethod('POST')) {
+                $days = $request->input('day');
+                $data = Working_day::all();
+
+                foreach ($data as $row){
+                    if (array_key_exists($row->id, $days)){
+                        $working = Working_day::find($row->id);
+                        $working->status = 1;
+                        $working->update();
+                    }else{
+                        $working = Working_day::find($row->id);
+                        $working->status = 0;
+                        $working->update();
+                    }
+                }
+
+                $request->session()->flash('smsg', 'Working day info updated successfully!');
+                return redirect()->route('working');
+
             }
         }
     }
