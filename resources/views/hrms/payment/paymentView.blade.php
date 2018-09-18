@@ -67,7 +67,7 @@
             <div class="col-sm-6">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h4 class="box-title">Employee Information</h4>
+                        <h4 class="box-title">Payment Information</h4>
                     </div>
                     <div class="box-body box-profile">
 

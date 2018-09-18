@@ -117,6 +117,29 @@
             <ul class="sidebar-menu">
                 <li class="header"> CONTROL PANEL</li>
 
+                <li class="treeview {{ Request::segment(2)=='company' ? "active" : "" }}">
+                    <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Company</span>
+                        <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="{{ Request::segment(3)=='settings' ? "active" : "" }}">
+                            <a href="#"><i class="fa fa-angle-right text-blue"
+                                                                 style="width:5px"></i> Settings</a>
+                        </li>
+
+                        <li class="{{ Request::segment(3)=='leave' ? "active" : "" }}">
+                            <a href="#"><i class="fa fa-angle-right text-blue"
+                                                                   style="width:5px"></i> Leave Category</a>
+                        </li>
+
+                        <li class="{{ Request::segment(3)=='department' ? "active" : "" }}">
+                            <a href="#"><i class="fa fa-angle-right text-blue"
+                                                                   style="width:5px"></i> Working Days</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="treeview {{ Request::segment(2)=='employee' ? "active" : "" }}">
                     <a href="#"><i class="fa fa-address-book-o text-blue"></i> <span>Employee</span>
                         <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
