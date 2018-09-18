@@ -129,7 +129,7 @@
                         </li>
 
                         <li class="{{ Request::segment(3)=='leave' ? "active" : "" }}">
-                            <a href="#"><i class="fa fa-angle-right text-blue"
+                            <a href="{{ route('leave') }}"><i class="fa fa-angle-right text-blue"
                                                                    style="width:5px"></i> Leave Category</a>
                         </li>
 

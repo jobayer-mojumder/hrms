@@ -52,3 +52,8 @@ Route::any('admin/notice/notice_add', 'Notice_admin@notice_add')->name('notice_a
 Route::any('admin/notice/notice_edit/{id}', 'Notice_admin@notice_edit')->name('notice_edit');
 Route::any('admin/notice/notice_delete/{id}', 'Notice_admin@notice_delete')->name('notice_delete');
 Route::any('admin/notice/notice_view/{id}', 'Notice_admin@notice_view')->name('notice_view');
+
+Route::any('admin/company/leave/', 'Company_admin@leave')->name('leave');
+Route::any('admin/company/leave_add', 'Company_admin@leave_add')->name('leave_add');
+Route::any('admin/company/leave_edit/{id}', 'Company_admin@leave_edit')->name('leave_edit');
+Route::any('admin/company/leave_delete/{id}', 'Company_admin@leave_delete')->name('leave_delete');
