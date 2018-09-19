@@ -58,6 +58,11 @@ Route::any('admin/company/leave_add', 'Company_admin@leave_add')->name('leave_ad
 Route::any('admin/company/leave_edit/{id}', 'Company_admin@leave_edit')->name('leave_edit');
 Route::any('admin/company/leave_delete/{id}', 'Company_admin@leave_delete')->name('leave_delete');
 
+Route::any('admin/company/holiday/', 'Company_admin@holiday')->name('holiday');
+Route::any('admin/company/holiday_add', 'Company_admin@holiday_add')->name('holiday_add');
+Route::any('admin/company/holiday_edit/{id}', 'Company_admin@holiday_edit')->name('holiday_edit');
+Route::any('admin/company/holiday_delete/{id}', 'Company_admin@holiday_delete')->name('holiday_delete');
+
 Route::any('admin/company/settings/', 'Company_admin@settings')->name('settings');
 Route::any('admin/company/working_days/', 'Company_admin@working')->name('working');
 

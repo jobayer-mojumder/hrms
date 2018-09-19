@@ -18,6 +18,7 @@ use App\User;
 use App\Leave;
 use App\Settings;
 use App\Working_day;
+use App\Holiday;
 
 class Company_admin extends Controller
 {
@@ -219,6 +220,107 @@ class Company_admin extends Controller
                 return redirect()->route('working');
 
             }
+        }
+    }
+
+    public function holiday(Request $request)
+    {
+        if (!$this->check_user()) {
+            redirect('logout');
+        } else {
+            $data['holidays'] = Holiday::all();
+            return view('hrms.holiday.holidayList', $data);
+        }
+    }
+
+    public function holiday_add(Request $request)
+    {
+        if (!$this->check_user()) {
+            return redirect()->route('login');
+        } else {
+            if ($request->isMethod('get')) {
+                return view('hrms.holiday.holidayAdd');
+
+            } elseif ($request->isMethod('post')) {
+
+                $request->validate([
+                    'name' => 'required|string|max:255',
+                    'start_date' => 'required',
+                    'end_date' => 'required',
+                    'publish' => 'required',
+                ]);
+
+                $holiday = new Holiday();
+                $holiday->name = $request->input('name');
+                $holiday->start_date = $request->input('start_date');
+                $holiday->end_date = $request->input('end_date');
+                $holiday->publish = $request->input('publish');
+
+                if ($holiday->save()) {
+                    $request->session()->flash('smsg', 'New Holiday added!');
+                    return redirect()->route('holiday');
+                } else {
+                    $request->session()->flash('emsg', 'Failed to add new Holiday');
+                    return redirect()->route('holiday_add');
+                }
+
+            } else {
+                return view('auth.login');
+            }
+        }
+    }
+
+    public function holiday_edit(Request $request, $id)
+    {
+        if ($this->check_user()) {
+            if ($request->isMethod('get')) {
+
+                $data['holiday'] = Holiday::find($id);
+
+                return view('hrms.holiday.holidayEdit', $data);
+            } else {
+
+                $request->validate([
+                    'name' => 'required|string|max:255',
+                    'start_date' => 'required',
+                    'end_date' => 'required',
+                    'publish' => 'required',
+                ]);
+
+                $holiday = Holiday::find($id);
+                $holiday->name = $request->input('name');
+                $holiday->start_date = $request->input('start_date');
+                $holiday->end_date = $request->input('end_date');
+                $holiday->publish = $request->input('publish');
+
+                if ($holiday->update()) {
+                    $request->session()->flash('smsg', 'Holiday info edited!');
+                    return redirect()->route('holiday');
+                } else {
+                    $request->session()->flash('emsg', 'Failed to edit Holiday info');
+                    return redirect()->route('holiday_edit', ['id' => $id]);
+                }
+            }
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function holiday_delete(Request $request, $id)
+    {
+        if ($this->check_user()) {
+            if ($id) {
+                $holiday = Holiday::find($id);
+                if ($holiday->delete()) {
+                    $request->session()->flash('smsg', 'Holiday deleted!');
+                    return redirect()->route('holiday');
+                } else {
+                    $request->session()->flash('emsg', 'Failed to delete Holiday info');
+                    return redirect()->route('holiday');
+                }
+            }
+        } else {
+            return redirect()->route('login');
         }
     }
 

@@ -151,6 +151,11 @@
                                                               style="width:5px"></i> Leave Category</a>
                         </li>
 
+                        <li class="{{ Request::segment(3)=='holiday' ? "active" : "" }}">
+                            <a href="{{ route('holiday') }}"><i class="fa fa-angle-right text-custom"
+                                                              style="width:5px"></i> Holiday</a>
+                        </li>
+
                         <li class="{{ Request::segment(3)=='working_days' ? "active" : "" }}">
                             <a href="{{ route('working') }}"><i class="fa fa-angle-right text-custom"
                                                                 style="width:5px"></i> Working Days</a>
