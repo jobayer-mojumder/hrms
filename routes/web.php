@@ -59,5 +59,10 @@ Route::any('admin/company/leave_edit/{id}', 'Company_admin@leave_edit')->name('l
 Route::any('admin/company/leave_delete/{id}', 'Company_admin@leave_delete')->name('leave_delete');
 
 Route::any('admin/company/settings/', 'Company_admin@settings')->name('settings');
-
 Route::any('admin/company/working_days/', 'Company_admin@working')->name('working');
+
+Route::any('admin/events/events/', 'Events_admin@events')->name('events');
+Route::any('admin/events/events_add', 'Events_admin@events_add')->name('events_add');
+Route::any('admin/events/events_edit/{id}', 'Events_admin@events_edit')->name('events_edit');
+Route::any('admin/events/events_delete/{id}', 'Events_admin@events_delete')->name('events_delete');
+Route::any('admin/events/events_view/{id}', 'Events_admin@events_view')->name('events_view');

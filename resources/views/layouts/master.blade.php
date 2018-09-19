@@ -19,13 +19,13 @@
     <link rel="stylesheet" href="{{ asset('public/admin_css/paging.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin_css/plugins/iCheck/all.css') }}">
     <link href="{{ asset('public/admin_css/plugins/datepicker/datepicker3.css') }}" rel="stylesheet" type="text/css">
-
-    <link href="{{ asset('public/admin_css/style.css') }}" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="{{ asset('public/admin_css/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <link href="{{ asset('public/admin_css/plugins/datatables/3/dataTables.bootstrap.css') }}" rel="stylesheet"
           type="text/css">
+    plugins
+    <link href="{{ asset('public/admin_css/style.css') }}" rel="stylesheet" type="text/css">
 
-    <script type="text/javascript" src="{{ asset('public/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/admin_css/plugins/ckeditor/ckeditor.js') }}"></script>
 
     <script language="JavaScript">
         function status(location) {
@@ -58,7 +58,7 @@
             <span class="logo-mini"><b>HRMS</b></span>
             @if(Session::get('settings')['logo'])
                 <span class="logo-lg"><img style="width: 100%;"
-                            src="{{ asset(Session::get('settings')['logo_path']).'/'.Session::get('settings')['thumb'] }}"></span>
+                                           src="{{ asset(Session::get('settings')['logo_path']).'/'.Session::get('settings')['thumb'] }}"></span>
             @else
                 <span class="logo-lg"><b>HRMS</b></span>
             @endif
@@ -90,7 +90,8 @@
                                     <img src="{{ asset('public/admin_css/dist/img/avatar5.png') }}" class="img-circle"
                                          alt="User Image"> @endif
                                 <p>{{ Auth::user()->name }} </p>
-                                <p style="font-size: 14px;">Authentication Level: {{ Auth::user()->group == 1 ? 'Super Admin': 'Admin' }}</p>
+                                <p style="font-size: 14px;">Authentication
+                                    Level: {{ Auth::user()->group == 1 ? 'Super Admin': 'Admin' }}</p>
                             </li>
                             <li class="user-body">
                                 <div class="row">
@@ -152,7 +153,7 @@
 
                         <li class="{{ Request::segment(3)=='working_days' ? "active" : "" }}">
                             <a href="{{ route('working') }}"><i class="fa fa-angle-right text-custom"
-                                           style="width:5px"></i> Working Days</a>
+                                                                style="width:5px"></i> Working Days</a>
                         </li>
                     </ul>
                 </li>
@@ -235,6 +236,26 @@
                     </ul>
                 </li>
 
+
+                <li class="treeview {{ Request::segment(2)=='events' ? "active" : "" }}">
+                    <a href="#"><i class="fa fa-certificate text-custom"></i> <span>Events</span>
+                        <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="{{ Request::segment(3)=='events' ? "active" : "" }}">
+                            <a href="{{ route('events') }}"><i class="fa fa-angle-right text-custom"
+                                                               style="width:5px"></i> All Events</a>
+                        </li>
+
+                        <li class="{{ Request::segment(3)=='events_add' ? "active" : "" }}">
+                            <a href="{{ route('events_add') }}"><i class="fa fa-angle-right text-custom"
+                                                                   style="width:5px"></i> Add Events</a>
+                        </li>
+
+                    </ul>
+                </li>
+
             </ul>
 
         </section>
@@ -263,7 +284,8 @@
 <script src="{{ asset('public/admin_css/plugins/datatables/3/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('public/admin_css/plugins/iCheck/icheck.min.js') }}"></script>
 <script src="{{ asset('public/admin_css/bower_components/fastclick/lib/fastclick.js') }}"></script>
-@yield('scripts')
+<script src="{{ asset('public/admin_css/bower_components/moment/moment.js') }}"></script>
+<script src="{{ asset('public/admin_css/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
 </body>
 
 
@@ -291,5 +313,5 @@
 
     });
 </script>
-
+@yield('scripts')
 </html>

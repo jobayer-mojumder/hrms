@@ -171,7 +171,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('public/admin_css/bower_components/moment/moment.js') }}"></script>
     <script src="{{ asset('public/admin_css/bower_components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
     <script>
         $(function () {

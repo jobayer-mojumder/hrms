@@ -51,8 +51,7 @@ class Notice_admin extends Controller
             return redirect()->route('login');
         } else {
             if ($request->isMethod('GET')) {
-                $data['departments'] = Department::all();
-                return view('hrms.notice.noticeAdd', $data);
+                return view('hrms.notice.noticeAdd');
 
             } elseif ($request->isMethod('POST')) {
                 $request->validate([
