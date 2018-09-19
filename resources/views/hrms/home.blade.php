@@ -153,7 +153,7 @@
 
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="box box-primary">
                     <div class="box-body no-padding">
                         <!-- THE CALENDAR -->
@@ -183,7 +183,7 @@
                 m = date.getMonth(),
                 y = date.getFullYear();
             $('#calendar').fullCalendar({
-                height: 440,
+                height: 450,
                 header: {
                     left: 'prev,next today',
                     center: 'title',
@@ -198,11 +198,21 @@
                 events: [
                         @foreach($events as $event)
                     {
-                        title: 'Long Event',
-                        start: new Date(y, m, d - 5),
-                        end: new Date(y, m, d - 2),
+                        title: '{{ $event->name }}',
+                        start: new Date('{{ $event->start_datetime }}'),
+                        end: new Date('{{ $event->end_datetime }}'),
                         backgroundColor: '#f39c12', //yellow
                         borderColor: '#f39c12',
+                    },
+                    @endforeach
+
+                        @foreach($holidays as $holiday)
+                    {
+                        title: '{{ $holiday->name }}',
+                        start: new Date('{{ $holiday->start_date }}'),
+                        end: new Date('{{ $holiday->end_date }}'),
+                        backgroundColor: '#00a65a',
+                        borderColor    : '#00a65a',
                     },
                     @endforeach
                 ]

@@ -51,8 +51,8 @@ class AdminController extends Controller {
 		if (!$this->check_user()) {
 			redirect('logout');
 		} else {
-		    $data['holidays'] = Holiday::all();
-		    $data['events'] = Event::all();
+		    $data['holidays'] = Holiday::where('publish', 1)->get();
+		    $data['events'] = Event::where('publish', 1)->get();
 			return view('hrms.home', $data);
 		}
 

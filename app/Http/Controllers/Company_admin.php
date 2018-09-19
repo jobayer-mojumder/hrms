@@ -252,8 +252,8 @@ class Company_admin extends Controller
 
                 $holiday = new Holiday();
                 $holiday->name = $request->input('name');
-                $holiday->start_date = $request->input('start_date');
-                $holiday->end_date = $request->input('end_date');
+                $holiday->start_date = $request->input('start_date').' 00:00:00';
+                $holiday->end_date = $request->input('end_date').' 23:59:00';
                 $holiday->publish = $request->input('publish');
 
                 if ($holiday->save()) {
@@ -289,8 +289,8 @@ class Company_admin extends Controller
 
                 $holiday = Holiday::find($id);
                 $holiday->name = $request->input('name');
-                $holiday->start_date = $request->input('start_date');
-                $holiday->end_date = $request->input('end_date');
+                $holiday->start_date = $request->input('start_date').' 00:00:00';
+                $holiday->end_date = $request->input('end_date').' 23:59:00';
                 $holiday->publish = $request->input('publish');
 
                 if ($holiday->update()) {

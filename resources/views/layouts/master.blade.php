@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{{ asset('public/admin_css/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin_css/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin_css/bootstrap/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('public/admin_css/dist/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin_css/dist/css/skins/skin-blue.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin_css/paging.css') }}">
@@ -51,7 +50,7 @@
     @yield('header')
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue fixed sidebar-mini">
 <div class="wrapper">
     <header class="main-header">
         <a href="{{ route('admin') }}" class="logo">
@@ -266,7 +265,7 @@
         </section>
     </aside>
     <div class="content-wrapper">
-        <section class="content-header">
+        <section class="content-header fixed">
             @yield('content-header')
         </section>
         @yield('content')
@@ -279,18 +278,17 @@
     </footer>
     <div class="control-sidebar-bg"></div>
 </div>
+
 <script src="{{ asset('public/admin_css/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <script src="{{ asset('public/admin_css/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('public/admin_css/dist/js/app.min.js') }}"></script>
 <script src="{{ asset('public/admin_css/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-
 <script src="{{ asset('public/admin_css/plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-
 <script src="{{ asset('public/admin_css/plugins/datatables/3/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('public/admin_css/plugins/iCheck/icheck.min.js') }}"></script>
-<script src="{{ asset('public/admin_css/bower_components/fastclick/lib/fastclick.js') }}"></script>
-<script src="{{ asset('public/admin_css/bower_components/moment/moment.js') }}"></script>
 <script src="{{ asset('public/admin_css/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+<script src="{{ asset('public/admin_css/bower_components/moment/moment.js') }}"></script>
+<script src="{{ asset('public/admin_css/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('public/admin_css/dist/js/app.min.js') }}"></script>
 </body>
 
 

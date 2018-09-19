@@ -63,7 +63,7 @@
                                 <label for="inputPassword3" class="col-sm-2 control-label">Start Date</label>
                                 <div class="col-sm-4">
                                     <div class="input-group input-append date" id="start_date" style="width:200px;" >
-                                        <input type="text" class="form-control" name="start_date" id="start_date_text" readonly="readonly" value="{{ $holiday->start_date }}" required />
+                                        <input type="text" class="form-control" name="start_date" id="start_date_text" readonly="readonly" value="{{ date('Y-m-d', strtotime($holiday->start_date)) }}" required />
                                         <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar" id="start_date"></span></span>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                                 <label for="inputPassword3" class="col-sm-2 control-label">End Date</label>
                                 <div class="col-sm-3">
                                     <div class="input-group input-append date" id="end_date" style="width:200px;" >
-                                        <input type="text" class="form-control" name="end_date" id="end_date_text" readonly="readonly" value="{{ $holiday->end_date }}" required />
+                                        <input type="text" class="form-control" name="end_date" id="end_date_text" readonly="readonly" value="{{ date('Y-m-d', strtotime($holiday->end_date)) }}" required />
                                         <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar" id="end_date"></span></span>
                                     </div>
                                 </div>
