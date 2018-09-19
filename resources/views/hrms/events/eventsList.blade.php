@@ -28,7 +28,7 @@
                     @endif
 
                     <div class="col-sm-12 add-button">
-                        <a href="{{ route('events_add') }}" class="btn  btn-primary btn-flat">Add new events</a>
+                        <a href="{{ route('events_add') }}" class="btn  btn-primary btn-flat">Add new Event</a>
                         <br>
                     </div>
                     <!-- /.box-header -->

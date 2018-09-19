@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Session;
 use Image;
 use app\User;
 use App\Settings;
+use App\Holiday;
+use App\Event;
 
 class AdminController extends Controller {
 	/**
@@ -49,7 +51,9 @@ class AdminController extends Controller {
 		if (!$this->check_user()) {
 			redirect('logout');
 		} else {
-			return view('hrms.home');
+		    $data['holidays'] = Holiday::all();
+		    $data['events'] = Event::all();
+			return view('hrms.home', $data);
 		}
 
 	}

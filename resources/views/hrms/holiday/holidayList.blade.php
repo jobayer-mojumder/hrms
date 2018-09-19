@@ -7,7 +7,7 @@
             <div class="col-xs-12">
                 <div class="box box-info">
                     <div class="box-header">
-                        <h4 class="box-title">Leave Category</h4>
+                        <h4 class="box-title">Holidays</h4>
                     </div>
                     @if(Session::has('smsg'))
                         <div class="col-sm-offset-3 col-sm-6 alert-message">
@@ -28,7 +28,7 @@
                     @endif
 
                     <div class="col-sm-12 add-button">
-                        <a href="{{ route('leave_add') }}" class="btn  btn-primary btn-flat">Add new leave</a>
+                        <a href="{{ route('holiday_add') }}" class="btn  btn-primary btn-flat">Add new Holiday</a>
                         <br>
                     </div>
                     <!-- /.box-header -->
@@ -38,23 +38,26 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Name</th>
-                                <th style="text-align: center;">Days</th>
+                                <th style="text-align: center;">Start Date</th>
+                                <th style="text-align: center;">End Date</th>
                                 <th style="text-align: center;">Edit</th>
                                 <th style="text-align: center;">Delete</th>
                             </tr>
                             </thead>
                             <tbody>
                             @php $i = 1; @endphp
-                            @foreach ($leaves as $result)
+                            @foreach ($holidays as $result)
                                 <tr>
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $result->name }}</td>
 
-                                    <td style="text-align: center;">{{ $result->days }}</td>
+                                    <td style="text-align: center;">{{ date('d M-Y', strtotime($result->start_date)) }}</td>
 
-                                    <td style="text-align: center;"><a href="{{ route('leave_edit', ['id' => $result->id ]) }}"><img src="{{ asset('public/admin_images/edit.png') }}"></a></td>
+                                    <td style="text-align: center;">{{ date('d M-Y', strtotime($result->end_date)) }}</td>
 
-                                    <td style="text-align: center;"><a href="JavaScript:del('{{ route('leave_delete', ['id' => $result->id]) }}')"><img src="{{ asset('public/admin_images/del.png') }}"></a></td>
+                                    <td style="text-align: center;"><a href="{{ route('holiday_edit', ['id' => $result->id ]) }}"><img src="{{ asset('public/admin_images/edit.png') }}"></a></td>
+
+                                    <td style="text-align: center;"><a href="JavaScript:del('{{ route('holiday_delete', ['id' => $result->id]) }}')"><img src="{{ asset('public/admin_images/del.png') }}"></a></td>
                                 </tr>
                             @endforeach
                         </table>

@@ -7,7 +7,7 @@
             <div class="col-xs-12">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h4 class="box-title">Leave Category info edit</h4>
+                        <h4 class="box-title">Holiday info edit</h4>
                     </div>
 
                     <div class="col-sm-12">
@@ -46,7 +46,7 @@
                     </div>
 
                     <form class="form-horizontal" method="post"
-                          action="{{ route('leave_edit', ['id'=> $leave->id]) }}"
+                          action="{{ route('holiday_edit', ['id'=> $holiday->id]) }}"
                           enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="box-body">
@@ -55,15 +55,41 @@
                                 <label for="name" class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="name" name="name" placeholder=""
-                                           required value="{{ $leave->name }}">
+                                           required value="{{ $holiday->name }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">Days</label>
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="days" name="days" placeholder=""
-                                           required value="{{ $leave->days }}">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Start Date</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group input-append date" id="start_date" style="width:200px;" >
+                                        <input type="text" class="form-control" name="start_date" id="start_date_text" readonly="readonly" value="{{ $holiday->start_date }}" required />
+                                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar" id="start_date"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">End Date</label>
+                                <div class="col-sm-3">
+                                    <div class="input-group input-append date" id="end_date" style="width:200px;" >
+                                        <input type="text" class="form-control" name="end_date" id="end_date_text" readonly="readonly" value="{{ $holiday->end_date }}" required />
+                                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar" id="end_date"></span></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="checkbox" id="same_as" >&nbsp;Same as Start date
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Publish</label>
+                                <div class="col-sm-2">
+                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
+                                            tabindex="-1" aria-hidden="true" name="publish" required>
+                                        <option value="1" {{ $holiday->publish == 1 ? 'selected' : '' }}>Yes</option>
+                                        <option value="0" {{ $holiday->publish == 0 ? 'selected' : '' }}>No</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -82,4 +108,27 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function () {
+            $('#same_as').on('change', function () {
+                if (this.checked){
+                    $('#end_date_text').val($('#start_date_text').val());
+                }else {
+                    $('#end_date').val('');
+                }
+            });
+
+            $('#start_date_text').on('change', function () {
+                if ($('#same_as').is(":checked")){
+                    $('#end_date_text').val($('#start_date_text').val());
+                }else {
+                    $('#end_date').val('');
+                }
+            });
+
+        });
+    </script>
 @endsection

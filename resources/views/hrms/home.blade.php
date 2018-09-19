@@ -4,7 +4,8 @@
     <link rel="stylesheet"
           href="{{ asset('public/admin_css/bower_components/fullcalendar/dist/fullcalendar.min.css') }}">
     <link rel="stylesheet"
-          href="{{ asset('public/admin_css/bower_components/fullcalendar/dist/fullcalendar.print.min.css') }}" media="print">
+          href="{{ asset('public/admin_css/bower_components/fullcalendar/dist/fullcalendar.print.min.css') }}"
+          media="print">
 @endsection
 
 @section('content-header')
@@ -182,6 +183,7 @@
                 m = date.getMonth(),
                 y = date.getFullYear();
             $('#calendar').fullCalendar({
+                height: 440,
                 header: {
                     left: 'prev,next today',
                     center: 'title',
@@ -193,7 +195,17 @@
                     week: 'week',
                     day: 'day'
                 },
-                height: 440,
+                events: [
+                        @foreach($events as $event)
+                    {
+                        title: 'Long Event',
+                        start: new Date(y, m, d - 5),
+                        end: new Date(y, m, d - 2),
+                        backgroundColor: '#f39c12', //yellow
+                        borderColor: '#f39c12',
+                    },
+                    @endforeach
+                ]
             });
         });
     </script>
