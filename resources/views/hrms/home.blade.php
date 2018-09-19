@@ -152,7 +152,7 @@
 
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-body no-padding">
                         <!-- THE CALENDAR -->
@@ -194,7 +194,7 @@
                     week: 'week',
                     day: 'day'
                 },
-                height: 450,
+                height: 440,
             });
         });
     </script>
