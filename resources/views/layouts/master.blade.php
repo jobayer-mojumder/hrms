@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('public/admin_css/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <link href="{{ asset('public/admin_css/plugins/datatables/3/dataTables.bootstrap.css') }}" rel="stylesheet"
           type="text/css">
-    plugins
+
     <link href="{{ asset('public/admin_css/style.css') }}" rel="stylesheet" type="text/css">
 
     <script type="text/javascript" src="{{ asset('public/admin_css/plugins/ckeditor/ckeditor.js') }}"></script>

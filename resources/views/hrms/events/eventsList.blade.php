@@ -38,7 +38,8 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Name</th>
-                                <th>Date</th>
+                                <th style="text-align: center;">Start Date</th>
+                                <th style="text-align: center;">End Date</th>
                                 <th style="text-align: center;">Publish</th>
                                 <th style="text-align: center;"></th>
                                 <th style="text-align: center;"></th>
@@ -50,8 +51,9 @@
                             @foreach ($events as $result)
                                 <tr>
                                     <td>{{ $i++ }}</td>
-                                    <td>{{ $result->title }}</td>
-                                    <td>{{ date('d M, Y', strtotime($result->created_at)) }}</td>
+                                    <td>{{ $result->name }}</td>
+                                    <td style="text-align: center;">{{ date('d M, Y - h:i A', strtotime($result->start_datetime)) }}</td>
+                                    <td style="text-align: center;">{{ date('d M, Y - h:i A', strtotime($result->end_datetime)) }}</td>
                                     <td style="text-align: center;"><img
                                                 src="{{ asset('public/admin_images') }}{{ $result->publish == 1 ? '/yes.png': '/no.png' }}"></td>
 

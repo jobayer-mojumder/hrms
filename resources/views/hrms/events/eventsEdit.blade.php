@@ -7,7 +7,7 @@
             <div class="col-xs-12">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h4 class="box-title">New Event</h4>
+                        <h4 class="box-title">Edit Notice</h4>
                     </div>
 
                     <div class="col-sm-12">
@@ -44,15 +44,15 @@
 
                     </div>
 
-                    <form class="form-horizontal" method="post" action="{{ route('events_add') }}">
+                    <form class="form-horizontal" method="post" action="{{ route('events_edit', ['id' => $events->id ]) }}">
                         {{ csrf_field() }}
                         <div class="box-body">
 
                             <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">Title</label>
+                                <label for="name" class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="title" name="name" placeholder=""
-                                           required value="{{ old('name') }}">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder=""
+                                           required value="{{ $events->name }}">
                                 </div>
                             </div>
 
@@ -61,7 +61,7 @@
                                 <div class="col-sm-3">
                                     <div class="input-group input-append">
                                         <input type="text" class="form-control" readonly="readonly"
-                                               value="{{ old('start_datetime') }}" name="start_datetime"
+                                               value="{{ $events->start_datetime }}" name="start_datetime"
                                                id="start_datetime" required/>
                                         <span class="input-group-addon add-on"><span
                                                     class="glyphicon glyphicon-calendar"></span></span>
@@ -74,7 +74,7 @@
                                 <div class="col-sm-3">
                                     <div class="input-group input-append">
                                         <input type="text" class="form-control" readonly="readonly"
-                                               value="{{ old('end_datetime') }}" name="end_datetime" id="end_datetime"/>
+                                               value="{{ $events->end_datetime }}" name="end_datetime" id="end_datetime"/>
                                         <span class="input-group-addon add-on"><span
                                                     class="glyphicon glyphicon-calendar"></span></span>
                                     </div>
@@ -85,7 +85,7 @@
                                 <label for="details" class="col-sm-2 control-label">Details</label>
                                 <div class="col-sm-9">
                                     <textarea class="form-control" id="details"
-                                              name="details">{{ old('details') }}</textarea>
+                                              name="details" required>{{ $events->details }}</textarea>
                                 </div>
                             </div>
                             <script type="text/javascript">
@@ -97,8 +97,8 @@
                                 <div class="col-sm-2">
                                     <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
                                             tabindex="-1" aria-hidden="true" name="publish" required>
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                        <option value="1" {{ $events->publish == 1 ? 'selected' : '' }}>Yes</option>
+                                        <option value="0" {{ $events->publish == 0 ? 'selected' : '' }}>No</option>
                                     </select>
                                 </div>
                             </div>

@@ -19,7 +19,7 @@ class CreateTableEventsTable extends Migration
             $table->text('details')->nullable(true);
             $table->dateTime('start_datetime');
             $table->dateTime('end_datetime')->nullable(true);
-            $table->tinyInteger('status');
+            $table->tinyInteger('publish');
             $table->timestamps();
         });
     }

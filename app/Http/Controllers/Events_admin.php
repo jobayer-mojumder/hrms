@@ -43,15 +43,15 @@ class Events_admin extends Controller
 
             } elseif ($request->isMethod('POST')) {
                 $request->validate([
-                    'title' => 'required|string|max:255',
-                    'short_details' => 'required',
-                    'details' => 'required',
+                    'name' => 'required|string|max:255',
+                    'start_datetime' => 'required',
                     'publish' => 'required|int',
                 ]);
 
                 $events = new Event();
-                $events->title = $request->input('title');
-                $events->short_details = $request->input('short_details');
+                $events->name = $request->input('name');
+                $events->start_datetime = $request->input('start_datetime');
+                $events->end_datetime = $request->input('end_datetime');
                 $events->details = $request->input('details');
                 $events->publish = $request->input('publish');
 
@@ -83,15 +83,15 @@ class Events_admin extends Controller
 
             } elseif ($request->isMethod('POST')) {
                 $request->validate([
-                    'title' => 'required|string|max:255',
-                    'short_details' => 'required',
-                    'details' => 'required',
+                    'name' => 'required|string|max:255',
+                    'start_datetime' => 'required',
                     'publish' => 'required|int',
                 ]);
 
                 $events = Event::find($id);
-                $events->title = $request->input('title');
-                $events->short_details = $request->input('short_details');
+                $events->name = $request->input('name');
+                $events->start_datetime = $request->input('start_datetime');
+                $events->end_datetime = $request->input('end_datetime');
                 $events->details = $request->input('details');
                 $events->publish = $request->input('publish');
 
