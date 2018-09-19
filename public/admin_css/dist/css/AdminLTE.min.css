@@ -248,11 +248,11 @@ a:hover, a:active, a:focus {
 }
 .content-header {
 	position: relative;
-	padding: 15px 15px 0 15px
+	padding: 8px;
 }
 .content-header>h1 {
 	margin: 0;
-	font-size: 24px
+	font-size: 22px
 }
 .content-header>h1>small {
 	font-size: 15px;
@@ -569,7 +569,7 @@ a:hover, a:active, a:focus {
 		display: block;
 		margin-left: -15px;
 		margin-right: -15px;
-		font-size: 18px
+		font-size: 15px
 	}
 	.sidebar-mini.sidebar-collapse .main-header .logo>.logo-lg {
 		display: none

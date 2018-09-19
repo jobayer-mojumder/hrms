@@ -44,7 +44,8 @@
 		background-color: #04A99C
 	}
 	.skin-blue .content-header {
-		background: transparent
+		background: #0b9c92;
+		color: white;
 	}
 	.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
 		background-color: #2f353a
