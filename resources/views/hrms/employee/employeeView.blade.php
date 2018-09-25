@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content-header')
     <h1>
-        Employee Info <span class="pull-right"><a href="{{ route('employee_edit', ['id' => $employee->id ]) }}"><img src="{{ asset('public/admin_images/edit-icon.png') }}"></a></span>
+        Employee Info <span class="pull-right"><a href="{{ route('employee_edit', ['id' => $employee->id ]) }}"><img class="header-edit-img" src="{{ asset('public/admin_images/edit-icon.png') }}"></a></span>
     </h1>
 @endsection
 @section('content')

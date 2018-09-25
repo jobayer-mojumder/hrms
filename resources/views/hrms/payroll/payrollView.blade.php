@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content-header')
-    <h1>Payroll Details <span class="pull-right"><a href="{{ route('payroll_edit', ['id' => $payroll->id ]) }}"><img src="{{ asset('public/admin_images/edit-icon.png') }}"></a></span></h1>
+    <h1>Payroll Details <span class="pull-right"><a href="{{ route('payroll_edit', ['id' => $payroll->id ]) }}"><img class="header-edit-img" src="{{ asset('public/admin_images/edit-icon.png') }}"></a></span></h1>
 @endsection
 @section('content')
     <div class="col-sm-12">

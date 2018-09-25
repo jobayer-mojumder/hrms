@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content-header')
     <h1>Payment Details <span class="pull-right"><a href="{{ route('payment_edit', ['id' => $payment->id ]) }}">
-                <img src="{{ asset('public/admin_images/edit-icon.png') }}"></a></span></h1>
+                <img class="header-edit-img" src="{{ asset('public/admin_images/edit-icon.png') }}"></a></span></h1>
 @endsection
 @section('content')
     <div class="col-sm-12">
