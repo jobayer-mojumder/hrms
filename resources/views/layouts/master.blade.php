@@ -95,10 +95,10 @@
                             <li class="user-body">
                                 <div class="row">
                                     <div class="col-xs-5 text-left">
-                                        <a class=topmenu href="{{ route('adminPassword') }}">Change Pass</a>
+                                        <a class="topmenu btn btn-default" href="{{ route('adminPassword') }}">Change Pass</a>
                                     </div>
                                     <div class="col-xs-7 text-left">
-                                        <a class=topmenu href="">IP authenticate List</a>
+                                        <a class="topmenu btn btn-default" href="#">IP authenticate List</a>
                                     </div>
                                 </div>
                             </li>

@@ -185,19 +185,19 @@
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>Basic Salary</b> <a class="pull-right" id="a_basic_salary">0</a>
+                                    <b>Basic Salary</b> <a class="pull-right" >{!! Session::get('settings')['currency'] !!} <span id="a_basic_salary">0</span></a>
                                 </li>
 
                                 <li class="list-group-item">
-                                    <b>Total Allowance </b> <a class="pull-right" id="a_total_allowance">0</a>
+                                    <b>Total Allowance </b> <a class="pull-right" >{!! Session::get('settings')['currency'] !!} <span id="a_total_allowance">0</span></a>
                                 </li>
 
                                 <li class="list-group-item">
-                                    <b>Total Deduction </b> <a class="pull-right" id="a_total_deduction">0</a>
+                                    <b>Total Deduction </b> <a class="pull-right" >{!! Session::get('settings')['currency'] !!} <span id="a_total_deduction">0</span></a>
                                 </li>
 
                                 <li class="list-group-item">
-                                    <b>Total </b> <a class="pull-right" id="a_total">0</a>
+                                    <b>Total </b> <a class="pull-right" >{!! Session::get('settings')['currency'] !!} <span id="a_total">0</span></a>
                                 </li>
                             </ul>
 

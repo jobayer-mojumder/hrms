@@ -79,30 +79,30 @@
                             </li>
 
                             <li class="list-group-item">
-                                <b>Net Salary</b> <a class="pull-right" >{{ $payment->net_salary }}</a>
+                                <b>Net Salary</b> <a class="pull-right" >{!! Session::get('settings')['currency'] !!} {{ $payment->net_salary }}</a>
                             </li>
 
                             @if( $payment->bonus >0 )
                                 <li class="list-group-item">
-                                    <b>Bonus </b> <a class="pull-right"> {{ $payment->bonus }} </a>
+                                    <b>Bonus </b> <a class="pull-right"> {!! Session::get('settings')['currency'] !!} {{ $payment->bonus }} </a>
                                 </li>
                             @endif
 
                             @if( $payment->fine_deduction >0 )
                                 <li class="list-group-item">
-                                    <b>Fine Deduction </b> <a class="pull-right"> {{ $payment->fine_deduction }} </a>
+                                    <b>Fine Deduction </b> <a class="pull-right"> {!! Session::get('settings')['currency'] !!} {{ $payment->fine_deduction }} </a>
                                 </li>
                             @endif
 
                             <li class="list-group-item">
-                                <b>Total Payable </b> <a class="pull-right"> {{ $payment->total_payable }} </a>
+                                <b>Total Payable </b> <a class="pull-right"> {!! Session::get('settings')['currency'] !!} {{ $payment->total_payable }} </a>
                             </li>
 
                             <li class="list-group-item">
-                                <b> Payment Amount</b> <a class="pull-right" >{{ $payment->payment_amount }}</a>
+                                <b> Payment Amount</b> <a class="pull-right" >{!! Session::get('settings')['currency'] !!} {{ $payment->payment_amount }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Payment Due</b> <a class="pull-right" >{{ $payment->payment_due}}</a>
+                                <b> Payment Due</b> <a class="pull-right" >{!! Session::get('settings')['currency'] !!} {{ $payment->payment_due}}</a>
                             </li>
 
                             <li class="list-group-item">
@@ -111,7 +111,7 @@
 
                             @if( $payment->comments )
                                 <li class="list-group-item">
-                                    <b>Comments </b> <a class="pull-right"> {{ $payment->comments }} </a>
+                                    <b>Comments </b> <a class="pull-right"> {!! Session::get('settings')['currency'] !!} {{ $payment->comments }} </a>
                                 </li>
                             @endif
 
@@ -131,23 +131,23 @@
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
                                 <b> House Rent Allowance</b> <a
-                                        class="pull-right">{{ $payment->house_rent_allowance }}</a>
+                                        class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payment->house_rent_allowance }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Medical Allowance</b> <a class="pull-right">{{ $payment->medical_allowance }}</a>
+                                <b> Medical Allowance</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payment->medical_allowance }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Special Allowance</b> <a class="pull-right">{{ $payment->special_allowance }}</a>
+                                <b> Special Allowance</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payment->special_allowance }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Fuel Allowance</b> <a class="pull-right">{{ $payment->fuel_allowance }}</a>
+                                <b> Fuel Allowance</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payment->fuel_allowance }}</a>
                             </li>
                             <li class="list-group-item">
                                 <b> Phone Bill Allowance</b> <a
-                                        class="pull-right">{{ $payment->phone_bill_allowance }}</a>
+                                        class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payment->phone_bill_allowance }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Other Allowance</b> <a class="pull-right">{{ $payment->other_allowance }}</a>
+                                <b> Other Allowance</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payment->other_allowance }}</a>
                             </li>
                         </ul>
                     </div>
@@ -164,13 +164,13 @@
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b> Tax Deduction</b> <a class="pull-right">{{ $payment->tax_deduction }}</a>
+                                <b> Tax Deduction</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payment->tax_deduction }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Provident Fund</b> <a class="pull-right">{{ $payment->provident_fund }}</a>
+                                <b> Provident Fund</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payment->provident_fund }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Other Deduction</b> <a class="pull-right">{{ $payment->other_deduction }}</a>
+                                <b> Other Deduction</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payment->other_deduction }}</a>
                             </li>
                         </ul>
                     </div>

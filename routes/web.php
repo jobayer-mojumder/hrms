@@ -77,3 +77,5 @@ Route::any('admin/expense/expense_add', 'Expense_admin@expense_add')->name('expe
 Route::any('admin/expense/expense_edit/{id}', 'Expense_admin@expense_edit')->name('expense_edit');
 Route::any('admin/expense/expense_delete/{id}', 'Expense_admin@expense_delete')->name('expense_delete');
 Route::any('admin/expense/expense_view/{id}', 'Expense_admin@expense_view')->name('expense_view');
+
+Route::get('employee/home/', 'Employee@index')->name('empHome');

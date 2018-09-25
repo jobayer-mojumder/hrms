@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <label for="title" class="col-sm-3 control-label">Expense Amount</label>
                                 <div class="col-sm-8">
-                                    <p class="no-border" >{{ Session::get('settings')['currency'] }} {{ $expense->amount }}</p>
+                                    <p class="no-border" >{!! Session::get('settings')['currency'] !!} {{ $expense->amount }}</p>
                                 </div>
                             </div>
 

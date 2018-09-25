@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <label for="amount" class="col-sm-2 control-label">Amount</label>
                                 <div class="col-sm-4">
-                                    <input type="number" class="form-control" id="amount" name="amount" placeholder="{{ Session::get('settings')['currency'] }}"
+                                    <input type="number" class="form-control" id="amount" name="amount" placeholder="{!! Session::get('settings')['currency'] !!}"
                                            required value="{{ old('amount') }}">
                                 </div>
                             </div>

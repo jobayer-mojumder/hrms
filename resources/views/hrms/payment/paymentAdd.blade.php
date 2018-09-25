@@ -77,7 +77,7 @@
                                     <label for="inputPassword3" class="col-sm-5 control-label">Payment for Month
                                     </label>
                                     <div class="col-sm-7">
-                                        <div class="input-group input-append date" id="date" style="width:200px;">
+                                        <div class="input-group input-append" style="width:200px;">
                                             <input type="text" class="form-control" name="payment_date" id="date"
                                                    readonly="readonly" value="{{ old('payment_date') }}" required/>
                                             <span class="input-group-addon add-on"><span

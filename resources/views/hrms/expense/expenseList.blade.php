@@ -54,7 +54,7 @@
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $result->title }}</td>
                                     <td style="text-align: center;">{{ $result->employee->first_name.' '.$result->employee->last_name }}</td>
-                                    <td style="text-align: center;">{{ Session::get('settings')['currency'] }} {{ $result->amount }}</td>
+                                    <td style="text-align: center;">{!! Session::get('settings')['currency'] !!} {{ $result->amount }}</td>
                                     <td style="text-align: center;">{{ date('d M, Y', strtotime($result->date)) }}</td>
                                     <td style="text-align: center;"><img
                                                 src="{{ asset('public/admin_images') }}{{ $result->status == 1 ? '/yes.png': '/no.png' }}"></td>

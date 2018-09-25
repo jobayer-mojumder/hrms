@@ -62,24 +62,24 @@
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
                                 <b>Basic Salary</b> <a class="pull-right"
-                                                       id="a_basic_salary">{{ $payroll->basic_salary }}</a>
+                                                       id="a_basic_salary">{!! Session::get('settings')['currency'] !!} {{ $payroll->basic_salary }}</a>
                             </li>
 
                             <li class="list-group-item">
                                 <b>Total Allowance </b> <a class="pull-right" id="a_total_allowance">
-                                    {{  $total_allowance = $payroll->house_rent_allowance + $payroll->medical_allowance + $payroll->special_allowance + $payroll->fuel_allowance + $payroll->phone_bill_allowance + $payroll->other_allowance }}
+                                    {!! Session::get('settings')['currency'] !!} {{  $total_allowance = $payroll->house_rent_allowance + $payroll->medical_allowance + $payroll->special_allowance + $payroll->fuel_allowance + $payroll->phone_bill_allowance + $payroll->other_allowance }}
                                 </a>
                             </li>
 
                             <li class="list-group-item">
                                 <b>Total Deduction </b> <a class="pull-right" id="a_total_deduction">
-                                    {{ $total_deduction =$payroll->tax_deduction + $payroll->provident_fund + $payroll->other_deduction }}
+                                    {!! Session::get('settings')['currency'] !!} {{ $total_deduction =$payroll->tax_deduction + $payroll->provident_fund + $payroll->other_deduction }}
                                 </a>
                             </li>
 
                             <li class="list-group-item">
-                                <b> Total Salary</b> <a class="pull-right"
-                                                        id="a_total">{{ $payroll->basic_salary + $total_allowance - $total_deduction }}</a>
+                                <b> Net. Salary</b> <a class="pull-right"
+                                                        id="a_total">{!! Session::get('settings')['currency'] !!} {{ $payroll->basic_salary + $total_allowance - $total_deduction }}</a>
                             </li>
                         </ul>
                     </div>
@@ -97,23 +97,23 @@
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
                                 <b> House Rent Allowance</b> <a
-                                        class="pull-right">{{ $payroll->house_rent_allowance }}</a>
+                                        class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payroll->house_rent_allowance }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Medical Allowance</b> <a class="pull-right">{{ $payroll->medical_allowance }}</a>
+                                <b> Medical Allowance</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payroll->medical_allowance }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Special Allowance</b> <a class="pull-right">{{ $payroll->special_allowance }}</a>
+                                <b> Special Allowance</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payroll->special_allowance }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Fuel Allowance</b> <a class="pull-right">{{ $payroll->fuel_allowance }}</a>
+                                <b> Fuel Allowance</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payroll->fuel_allowance }}</a>
                             </li>
                             <li class="list-group-item">
                                 <b> Phone Bill Allowance</b> <a
-                                        class="pull-right">{{ $payroll->phone_bill_allowance }}</a>
+                                        class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payroll->phone_bill_allowance }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Other Allowance</b> <a class="pull-right">{{ $payroll->other_allowance }}</a>
+                                <b> Other Allowance</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payroll->other_allowance }}</a>
                             </li>
                         </ul>
                     </div>
@@ -130,13 +130,13 @@
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b> Tax Deduction</b> <a class="pull-right">{{ $payroll->tax_deduction }}</a>
+                                <b> Tax Deduction</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payroll->tax_deduction }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Provident Fund</b> <a class="pull-right">{{ $payroll->provident_fund }}</a>
+                                <b> Provident Fund</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payroll->provident_fund }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b> Other Deduction</b> <a class="pull-right">{{ $payroll->other_deduction }}</a>
+                                <b> Other Deduction</b> <a class="pull-right">{!! Session::get('settings')['currency'] !!} {{ $payroll->other_deduction }}</a>
                             </li>
                         </ul>
                     </div>

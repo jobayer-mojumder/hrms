@@ -62,9 +62,9 @@
 
                                     <td style="text-align: center;">{{ date('M-Y', strtotime($payment->payment_for_month)) }}</td>
 
-                                    <td style="text-align: center;">{{ $payment->total_payable }}</td>
-                                    <td style="text-align: center;">{{ $payment->payment_amount }}</td>
-                                    <td style="text-align: center;">{{ $payment->payment_due}}</td>
+                                    <td style="text-align: center;">{!! Session::get('settings')['currency'] !!} {{ $payment->total_payable }}</td>
+                                    <td style="text-align: center;">{!! Session::get('settings')['currency'] !!} {{ $payment->payment_amount }}</td>
+                                    <td style="text-align: center;">{!! Session::get('settings')['currency'] !!} {{ $payment->payment_due}}</td>
 
                                     <td style="text-align: center;"><a href="{{ route('payment_view', ['id' => $payment->id ]) }}">View</a></td>
 
