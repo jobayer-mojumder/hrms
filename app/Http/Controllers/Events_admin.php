@@ -10,6 +10,12 @@ use App\Event;
 
 class Events_admin extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function check_user()
     {
         if (Auth::check()) {
@@ -60,7 +66,6 @@ class Events_admin extends Controller
                     return redirect()->route('events');
                 } else {
                     $request->session()->flash('emsg', 'Event add failed!!!');
-                    $data['departments'] = Department::all();
                     return view('hrms.events.eventsAdd', $data);
                 }
             }

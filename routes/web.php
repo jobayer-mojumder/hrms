@@ -71,3 +71,9 @@ Route::any('admin/events/events_add', 'Events_admin@events_add')->name('events_a
 Route::any('admin/events/events_edit/{id}', 'Events_admin@events_edit')->name('events_edit');
 Route::any('admin/events/events_delete/{id}', 'Events_admin@events_delete')->name('events_delete');
 Route::any('admin/events/events_view/{id}', 'Events_admin@events_view')->name('events_view');
+
+Route::any('admin/expense/expense/', 'Expense_admin@expense')->name('expense');
+Route::any('admin/expense/expense_add', 'Expense_admin@expense_add')->name('expense_add');
+Route::any('admin/expense/expense_edit/{id}', 'Expense_admin@expense_edit')->name('expense_edit');
+Route::any('admin/expense/expense_delete/{id}', 'Expense_admin@expense_delete')->name('expense_delete');
+Route::any('admin/expense/expense_view/{id}', 'Expense_admin@expense_view')->name('expense_view');

@@ -260,6 +260,25 @@
                     </ul>
                 </li>
 
+                <li class="treeview {{ Request::segment(2)=='expense' ? "active" : "" }}">
+                    <a href="#"><i class="fa fa-certificate text-custom"></i> <span>Expense</span>
+                        <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="{{ Request::segment(3)=='expense' ? "active" : "" }}">
+                            <a href="{{ route('expense') }}"><i class="fa fa-angle-right text-custom"
+                                                                style="width:5px"></i> All Expenses</a>
+                        </li>
+
+                        <li class="{{ Request::segment(3)=='expense_add' ? "active" : "" }}">
+                            <a href="{{ route('expense_add') }}"><i class="fa fa-angle-right text-custom"
+                                                                    style="width:5px"></i> Add Expense</a>
+                        </li>
+
+                    </ul>
+                </li>
+
             </ul>
 
         </section>

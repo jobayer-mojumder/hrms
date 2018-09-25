@@ -21,6 +21,7 @@ class CreateTableSettings extends Migration
             $table->string('email')->nullable(true);
             $table->string('fax')->nullable(true);
             $table->string('website')->nullable(true);
+            $table->string('currency')->default('BDT');
             $table->string('logo')->nullable(true);
             $table->string('thumb')->nullable(true);
             $table->string('logo_path')->nullable(true);
