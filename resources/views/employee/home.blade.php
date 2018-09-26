@@ -80,79 +80,38 @@
             <!-- /.col -->
         </div>
 
-        <div class="row">
-            <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-aqua">
-                    <div class="inner">
-                        <h3>150</h3>
-
-                        <p>New Orders</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-shopping-cart"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">
-                        More info <i class="fa fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                        <p>Bounce Rate</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">
-                        More info <i class="fa fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-yellow">
-                    <div class="inner">
-                        <h3>44</h3>
-
-                        <p>User Registrations</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">
-                        More info <i class="fa fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3>65</h3>
-
-                        <p>Unique Visitors</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">
-                        More info <i class="fa fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- ./col -->
-        </div>
-
 
         <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">CPU Traffic</span>
+                                <span class="info-box-number">90<small>%</small></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Likes</span>
+                                <span class="info-box-number">41,410</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
             <div class="col-md-7">
                 <div class="box box-primary">
                     <div class="box-body no-padding">
@@ -212,7 +171,7 @@
                         start: new Date('{{ $holiday->start_date }}'),
                         end: new Date('{{ $holiday->end_date }}'),
                         backgroundColor: '#00a65a',
-                        borderColor    : '#00a65a',
+                        borderColor: '#00a65a',
                     },
                     @endforeach
                 ]
